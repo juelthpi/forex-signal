@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <!-- Aos animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- swiper slider CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    :root {
+      --primary: #f37927;
+      --secondary: #5cf66b;
+      --font: "Roboto", sans-serif;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-gray-900 via-secondary/10 to-black overflow-hidden backdrop-blur-md">
+    <div class="text-center">
+      <!-- Glowing Spinner -->
+      <div class="relative w-22 h-22 mx-auto mb-6">
+        <!-- Outer Pulse Ring -->
+        <div class="absolute inset-0 rounded-full bg-blue-500/20 blur-2xl animate-ping"></div>
+        <!-- Main Spinning Ring -->
+        <div
+          class="absolute inset-0 rounded-full border-8 border-transparent border-t-brand/50 border-l-brand/40 animate-spin">
+        </div>
+        <!-- Inner Glow -->
+        <div
+          class="absolute inset-4 rounded-full bg-gradient-to-br from-brand/60 to-secondary/10 blur-xl animate-pulse">
+        </div>
+        <!-- Center Core -->
+        <div class="absolute inset-8 rounded-full bg-brand shadow-2xl"></div>
+      </div>
+
+      <!-- Text with Dot Animation -->
+      <h2 class="text-xl font-bold text-white mb-3">Loading Forex Signal</h2>
+      <div class="flex justify-center space-x-2">
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce"></div>
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce delay-150"></div>
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce delay-300"></div>
+      </div>
+      <p class="text-gray-400 text-sm mt-4">
+        Analyzing matches & generating winning tips...
+      </p>
+    </div>
+  </div>
+  <!-- Header -->
+  <header class="py-4 bg-white/10 backdrop-blur-md z-40 sticky top-0 border-b border-white/10">
+    <div class="container">
+      <div class="flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-brand"><img src="assets/images/logo.png" alt="logo"
+            class="max-w-50" /></a>
+        <button id="open-menu" class="lg:hidden text-gray-700">
+          <!-- Hamburger icon -->
+          <svg class="w-9 h-9 bg-brand rounded-full p-1.5" fill="none" stroke="white" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav class="hidden lg:flex space-x-4 lg:space-x-8">
+          <a href="index.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Home</a>
+          <a href="about-us.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">About</a>
+          <a href="fx-live-chart.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">FX
+            Live Charts</a>
+          <a href="forex-calender.html"
+            class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Forex Calendar</a>
+          <a href="pricing.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Pricing</a>
+          <a href="index.html#blog" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Blog</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-2.5">
+          <a href="contact-us.html" class="active primary-btn"> CONTACT US </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-brand/1 hidden z-40"></div>
+  <!-- Off‑canvas menu -->
+  <aside id="canvas-menu"
+    class="fixed top-0 z-50 left-0 w-64 h-full bg-brand/10 shadow-lg transform -translate-x-full transition-transform duration-500 ease-in-out backdrop-blur-xl">
+    <div class="p-4 px-2 flex justify-between items-center border-b border-brand/50">
+      <a href="index.html" class="text-2xl font-bold text-brand"><img src="assets/images/logo.png" alt="logo"
+          class="max-w-40" /></a>
+      <button id="close-menu" class="text-white">✕</button>
+    </div>
+    <nav class="flex flex-col p-4 space-y-3">
+      <a href="index.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">Home</a>
+      <a href="about-us.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">About</a>
+      <a href="fx-live-chart.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">FX Live Charts</a>
+      <a href="forex-calender.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">Forex Calendar</a>
+      <a href="pricing.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">Pricing</a>
+      <a href="index.html#blog" class="text-white/80 hover:text-brand duration-500 ease-in-out">Blog</a>
+      <a href="contact-us.html" class="primary-btn w-full mt-6">CONTACT US</a>
+    </nav>
+  </aside>
+  <!-- Page Info Section Start -->
+  <section class="relative pt-35 pb-20 md:pt-40 md:pb-25 lg:pt-50 lg:pb-30 -mt-18 cta-grid-box">
+    <div class="container">
+
+      <div class="max-w-full mx-auto text-center space-y-3" data-aos="fade-up" data-aos-duration="800">
+        <h2 class="leading-tight">The Future of Financial Transparency: Building Trust Through Data</h2>
+
+      </div>
+    </div>
+    <!-- effect -->
+    <div class="color-effect"></div>
+    <div class="left-0 absolute top-0 -z-10 h-full w-full opacity-70 md:opacity-100">
+      <img src="assets/images/page-info-bg/page-info-thumbnail-1.jpg" alt="image" class="w-full h-full object-cover" />
+    </div>
+  </section>
+  <!--   Blog Details Start -->
+  <section class="section-gap">
+    <div class="container">
+      <div class="bg-white/6 rounded-xl p-4">
+        <div class="space-y-4">
+          <img src="assets/images/blogs/sample-trade-image-1.png" alt="image" class="w-full  object-cover rounded-xl">
+          <h5>The Future of Financial Transparency: Building Trust Through Data</h5>
+          <div class="flex items-center justify-between flex-wrap gap-2 mt-5 mb-5">
+            <div class="flex items-center gap-3">
+              <div>
+                <img src="assets/images/user/user-1.png" alt="avatar" class="h-10 w-10 rounded-full">
+              </div>
+              <div>
+                <h6 class="font-normal text-lg">By Admin</h6>
+
+                <p class="text-white/60 text-sm">May 17, 2024</p>
+              </div>
+            </div>
+            <ul class="flex items-center gap-2">
+              <li><a href="#"
+                  class="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center duration-500 hover:bg-blue-600 hover:translate-y-[-4px]"><img
+                    src="assets/images/icons/social-icons/facebook.png" alt="icon"></a></li>
+              <li><a href="#"
+                  class="h-10 w-10 rounded-full bg-[#0A66C2] flex items-center justify-center duration-500 hover:bg-[#0A66C2]/60 hover:translate-y-[-4px]"><img
+                    src="assets/images/icons/social-icons/linkedin.png" alt="icon"></a></li>
+              <li><a href="#"
+                  class="h-10 w-10 rounded-full bg-[#D62976] flex items-center justify-center duration-500 hover:bg-[#D62976]/60 hover:translate-y-[-4px]"><img
+                    src="assets/images/icons/social-icons/instagram.png" alt="icon"></a></li>
+              <li><a href="#"
+                  class="h-10 w-10 rounded-full bg-[#2AABEE] flex items-center justify-center duration-500 hover:bg-[#2AABEE]/60 hover:translate-y-[-4px]"><img
+                    src="assets/images/icons/social-icons/telegram.png" alt="icon"></a></li>
+            </ul>
+          </div>
+          <p>Financial transparency is a critical aspect of building trust in the global economy. By sharing data and
+            insights openly, we can create a more transparent and accountable financial system. This can help to reduce
+            uncertainty and increase confidence in the markets, leading to better decision-making and more stable
+            economic growth.</p>
+          <p>Financial transparency is a critical aspect of building trust in the global economy. By sharing data and
+            insights openly, we can create a more transparent and accountable financial system. This can help to reduce
+            uncertainty and increase confidence in the markets, leading to better decision-making and more stable
+            economic growth.</p>
+          <p>Financial transparency is a critical aspect of building trust in the global economy. By sharing data and
+            insights openly, we can create a more transparent and accountable financial system. This can help to reduce
+            uncertainty and increase confidence in the markets, leading to better decision-making and more stable
+            economic growth.</p>
+          <h3>Discovering the Wonders of Asia</h3>
+          <p>Financial transparency is a critical aspect of building trust in the global economy. By sharing data and
+            insights openly, we can create a more transparent and accountable financial system. This can help to reduce
+            uncertainty and increase confidence in the markets, leading to better decision-making and more stable
+            economic growth.</p>
+          <p>Financial transparency is a critical aspect of building trust in the global economy. By sharing data and
+            insights openly, we can create a more transparent and accountable financial system. This can help to reduce
+            uncertainty and increase confidence in the markets, leading to better decision-making and more stable
+            economic growth.</p>
+        </div>
+        <div class="mt-8 rounded-lg bg-white/10 p-4">
+          <h6>Comments</h6>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- Blog Details End -->
+  <section class="section-gap bg-black/40">
+    <div class="container">
+      <div>
+        <h3 class="text-center lg:text-start">Discover Our Blogs</h3>
+        <!-- Grid Container -->
+        <div class="inner-gap grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6">
+          <!-- item 1 -->
+          <div class="space-y-4 bg-white/4 py-6 px-4 rounded-2xl h-full hover:bg-white/10 duration-700">
+            <div class="relative overflow-hidden rounded-2xl group">
+              <img src="assets/images/blogs/short-term-image-1.png" alt="img"
+                class="w-full h-auto object-cover transform group-hover:scale-105 duration-700" />
+            </div>
+            <div class="space-y-3">
+              <div class="border border-white/6 bg-white/2 backdrop-blur-3xl p-1 pe-4 rounded-full ">
+                <ul class="flex items-center gap-3 justify-between">
+                  <li class="px-3 p-1 text-white bg-white/8 rounded-full text-xs font-medium">Forex</li>
+                  <li class="text-white/60 text-xs"> 28th Oct, 2022</li>
+                </ul>
+              </div>
+              <h5 class="filter-item-title">Short-term forecast for BTCUSD and more</h5>
+              <p class="text-sm line-clamp-2">
+                I have prepared a short-term cryptocurrency forecast based on the Elliott wave analysis...
+              </p>
+            </div>
+            <div class="inline-block">
+              <a href="blog-details.html"
+                class="text-white border border-brand rounded-full duration-500 hover:bg-brand hover:border-white py-1 px-2 text-sm font-normal">Read
+                More</a>
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="space-y-4 bg-white/4 py-6 px-4 rounded-2xl h-full hover:bg-white/10 duration-700">
+            <div class="relative overflow-hidden rounded-2xl group">
+              <img src="assets/images/blogs/sample-trade-image-1.png" alt="img"
+                class="w-full h-auto object-cover transform group-hover:scale-105 duration-700" />
+            </div>
+            <div class="space-y-3">
+              <div class="border border-white/6 bg-white/2 backdrop-blur-3xl p-1 pe-4 rounded-full ">
+                <ul class="flex items-center gap-3 justify-between">
+                  <li class="px-3 p-1 text-white bg-white/8 rounded-full text-xs font-medium">Forex</li>
+                  <li class="text-white/60 text-xs"> 28th Oct, 2022</li>
+                </ul>
+              </div>
+              <h5 class="filter-item-title">Short-term forecast for BTCUSD and more</h5>
+              <p class="text-sm line-clamp-2">
+                I have prepared a short-term cryptocurrency forecast based on the Elliott wave analysis...
+              </p>
+            </div>
+            <div class="inline-block">
+              <a href="blog-details.html"
+                class="text-white border border-brand rounded-full duration-500 hover:bg-brand hover:border-white py-1 px-2 text-sm font-normal">Read
+                More</a>
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="space-y-4 bg-white/4 py-6 px-4 rounded-2xl h-full hover:bg-white/10 duration-700">
+            <div class="relative overflow-hidden rounded-2xl group">
+              <img src="assets/images/blogs/short-term-image-1.png" alt="img"
+                class="w-full h-auto object-cover transform group-hover:scale-105 duration-700" />
+            </div>
+            <div class="space-y-3">
+              <div class="border border-white/6 bg-white/2 backdrop-blur-3xl p-1 pe-4 rounded-full ">
+                <ul class="flex items-center gap-3 justify-between">
+                  <li class="px-3 p-1 text-white bg-white/8 rounded-full text-xs font-medium">Forex</li>
+                  <li class="text-white/60 text-xs"> 28th Oct, 2022</li>
+                </ul>
+              </div>
+              <h5 class="filter-item-title">Short-term forecast for BTCUSD and more</h5>
+              <p class="text-sm line-clamp-2">
+                I have prepared a short-term cryptocurrency forecast based on the Elliott wave analysis...
+              </p>
+            </div>
+            <div class="inline-block">
+              <a href="blog-details.html"
+                class="text-white border border-brand rounded-full duration-500 hover:bg-brand hover:border-white py-1 px-2 text-sm font-normal">Read
+                More</a>
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="space-y-4 bg-white/4 py-6 px-4 rounded-2xl h-full hover:bg-white/10 duration-700">
+            <div class="relative overflow-hidden rounded-2xl group">
+              <img src="assets/images/blogs/sample-trade-image-1.png" alt="img"
+                class="w-full h-auto object-cover transform group-hover:scale-105 duration-700" />
+            </div>
+            <div class="space-y-3">
+              <div class="border border-white/6 bg-white/2 backdrop-blur-3xl p-1 pe-4 rounded-full ">
+                <ul class="flex items-center gap-3 justify-between">
+                  <li class="px-3 p-1 text-white bg-white/8 rounded-full text-xs font-medium">Forex</li>
+                  <li class="text-white/60 text-xs"> 28th Oct, 2022</li>
+                </ul>
+              </div>
+              <h5 class="filter-item-title">Short-term forecast for BTCUSD and more</h5>
+              <p class="text-sm line-clamp-2">
+                I have prepared a short-term cryptocurrency forecast based on the Elliott wave analysis...
+              </p>
+            </div>
+            <div class="inline-block">
+              <a href="blog-details.html"
+                class="text-white border border-brand rounded-full duration-500 hover:bg-brand hover:border-white py-1 px-2 text-sm font-normal">Read
+                More</a>
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="space-y-4 bg-white/4 py-6 px-4 rounded-2xl h-full hover:bg-white/10 duration-700">
+            <div class="relative overflow-hidden rounded-2xl group">
+              <img src="assets/images/blogs/short-term-image-1.png" alt="img"
+                class="w-full h-auto object-cover transform group-hover:scale-105 duration-700" />
+            </div>
+            <div class="space-y-3">
+              <div class="border border-white/6 bg-white/2 backdrop-blur-3xl p-1 pe-4 rounded-full ">
+                <ul class="flex items-center gap-3 justify-between">
+                  <li class="px-3 p-1 text-white bg-white/8 rounded-full text-xs font-medium">Forex</li>
+                  <li class="text-white/60 text-xs"> 28th Oct, 2022</li>
+                </ul>
+              </div>
+              <h5 class="filter-item-title">Short-term forecast for BTCUSD and more</h5>
+              <p class="text-sm line-clamp-2">
+                I have prepared a short-term cryptocurrency forecast based on the Elliott wave analysis...
+              </p>
+            </div>
+            <div class="inline-block">
+              <a href="blog-details.html"
+                class="text-white border border-brand rounded-full duration-500 hover:bg-brand hover:border-white py-1 px-2 text-sm font-normal">Read
+                More</a>
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="space-y-4 bg-white/4 py-6 px-4 rounded-2xl h-full hover:bg-white/10 duration-700">
+            <div class="relative overflow-hidden rounded-2xl group">
+              <img src="assets/images/blogs/short-term-image-1.png" alt="img"
+                class="w-full h-auto object-cover transform group-hover:scale-105 duration-700" />
+            </div>
+            <div class="space-y-3">
+              <div class="border border-white/6 bg-white/2 backdrop-blur-3xl p-1 pe-4 rounded-full ">
+                <ul class="flex items-center gap-3 justify-between">
+                  <li class="px-3 p-1 text-white bg-white/8 rounded-full text-xs font-medium">Forex</li>
+                  <li class="text-white/60 text-xs"> 28th Oct, 2022</li>
+                </ul>
+              </div>
+              <h5 class="filter-item-title">Short-term forecast for BTCUSD and more</h5>
+              <p class="text-sm line-clamp-2">
+                I have prepared a short-term cryptocurrency forecast based on the Elliott wave analysis...
+              </p>
+            </div>
+            <div class="inline-block">
+              <a href="blog-details.html"
+                class="text-white border border-brand rounded-full duration-500 hover:bg-brand hover:border-white py-1 px-2 text-sm font-normal">Read
+                More</a>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+  <!-- Subscribe Section Start -->
+  <section class="section-gap">
+    <div class="container">
+      <div class="cta-grid-box">
+        <div class="flex gap-x-10 justify-center lg:flex-row flex-wrap gap-y-8 items-center lg:justify-between">
+          <div class="relative z-10 max-w-150 lg:mx-0 mx-auto lg:text-start text-center space-y-2" data-aos="fade-up"
+            data-aos-duration="600">
+            <h3>Subscribe To Our Newsletter</h3>
+            <p>Dont miss any promotion or news from us</p>
+          </div>
+          <div
+            class="flex items-center gap-3 border border-white/10 rounded-full p-1 ps-4 bg-white/4 backdrop-blur-3xl">
+            <input type="email" placeholder="Enter Your Email Here"
+              class="text-white text-sm sm:text-lg border-0 outline-0" />
+            <button type="submit" class="text-sm text-nowrap px-2 sm:px-auto primary-btn cursor-pointer">
+              Subscribe Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Subscribe Section End -->
+  <!-- Footer Section Start -->
+  <section class="section-gap bg-black/20">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-6">
+        <!--   About -->
+        <div class="space-y-6 md:col-span-3 lg:col-span-1 md:text-center lg:text-left">
+          <a href="index.html" class="block">
+            <img src="assets/images/logo.png" alt="logo" class="max-w-40 mx-auto lg:mx-0" />
+          </a>
+          <p class="text-gray-400 text-center md:text-start text-sm leading-7 md:max-w-2xl md:mx-auto lg:mx-0">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy.
+            Lorem Ipsum is simply dummy text of the printing typesetting
+            industry Lorem Ipsum is simply.
+          </p>
+        </div>
+
+        <!--   Popular Category -->
+        <div>
+          <h4 class="footer-title">Popular Category</h4>
+          <ul class="space-y-1">
+            <li><a href="fx-live-chart.html" class="footer-link">Cryipto</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Forex</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Bitcoin</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">International</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Market</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Currency Exchange</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Trading</a></li>
+          </ul>
+        </div>
+
+        <!--  Popular Blog -->
+        <div>
+          <h4 class="footer-title">Popular Blog</h4>
+          <ul class="space-y-1">
+            <li>
+              <a href="#" class="footer-link">'Doing daily chores can h...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">$300 Billion: Bitcoin Pri...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">As Price Eyes $10,000, Bi...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">But I must explain to mis...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">Short-term forecast for B...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">$10,000 Today? Bitcoin Pr...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">Where does it come from?</a>
+            </li>
+          </ul>
+        </div>
+
+        <!--  Contact & Social -->
+        <div>
+          <h4 class="footer-title">Contact Details</h4>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-3">
+              <img src="assets/images/icons/social-icons/call.png" alt="phone" class="w-5 h-5 object-contain" />
+              <a href="tel:1234567890" class="text-gray-400 text-sm">(480) 555-0103</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <img src="assets/images/icons/social-icons/message.png" alt="email" class="w-5 h-5 object-contain" />
+              <a href="mailto:willie.jennings@example.com" class="text-gray-400 text-sm">willie.jennings@example.com</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <img src="assets/images/icons/social-icons/location.png" alt="location"
+                class="w-5 h-5 object-contain mt-1" />
+              <a href="https://www.google.com/maps/place/2715+Ash+Dr,+San+Jose,+CA+95129"
+                class="text-gray-400 text-sm">2715 Ash Dr. San Jose,<br />South Dakota 83475</a>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center md:items-start">
+            <h4 class="text-white font-bold text-[16px] uppercase mb-4">
+              FOLLOW US
+            </h4>
+            <div class="flex gap-3">
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/facebook.png" alt="facebook"
+                  class="w-4 h-4 object-contain" />
+              </a>
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/twitter.png" alt="twitter" class="w-4 h-4 object-contain" />
+              </a>
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/instagram.png" alt="instagram"
+                  class="w-4 h-4 object-contain" />
+              </a>
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/linkedin.png" alt="linkedin"
+                  class="w-4 h-4 object-contain" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div
+        class="border-t border-white/10 mt-10 gap-4 flex flex-col md:flex-row justify-between items-center bg-[#1F2937] p-6 rounded-xl">
+        <p class="text-gray-400 text-sm">
+          © 2026
+          <a href="index.html" class="text-white hover:text-brand duration-800">Forex Signal</a>
+          . All Rights Reserved
+        </p>
+        <div class="flex gap-6">
+          <a href="privacy-policy.html" class="text-gray-400 text-sm hover:text-white transition-colors">Privacy
+            Policy</a>
+          <a href="terms-condition.html" class="text-gray-400 text-sm hover:text-white transition-colors">Cookie
+            Policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer Section End -->
+  <!-- Swiper slider JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Aos -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      mirror: true,
+      once: false,
+      offset: 100,
+      anchorPlacement: "top-bottom",
+      disableMutationObserver: false,
+    });
+  </script>
+  <!-- preloader js -->
+  <script>
+    window.addEventListener("load", () => {
+      const preloader = document.getElementById("preloader");
+      preloader.classList.add("opacity-0");
+      setTimeout(() => {
+        preloader.classList.add("hidden");
+      }, 800);
+    });
+  </script>
+  <script>
+    const featureBlogSlider = new Swiper(".feature-blog-slider", {
+      slidesPerView: 1,
+      centeredSlides: true,
+      loop: true,
+      speed: 3200,
+
+      effect: "fade",
+      fadeEffect: {
+        crossFade: true,
+      },
+
+      autoplay: {
+        delay: 1500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const initializeFilter = (instance) => {
+        const buttons = instance.querySelectorAll(".filter-btn");
+        const items = instance.querySelectorAll(".filter-item");
+        const searchInput = instance.querySelector(".filter-search-input");
+        const grid = instance.querySelector(".filter-grid");
+        const noResults = instance.querySelector(".no-results");
+
+        let currentFilter = "all";
+        let searchTerm = "";
+
+        // Function to update counts on buttons
+        const updateButtonCounts = () => {
+          buttons.forEach((btn) => {
+            const filterValue = btn.getAttribute("data-filter");
+            let count = 0;
+
+            if (filterValue === "all") {
+              count = items.length;
+            } else {
+              count = Array.from(items).filter(item => {
+                const itemCats = (item.getAttribute("data-category") || "").split(" ");
+                return itemCats.includes(filterValue);
+              }).length;
+            }
+            const baseText = btn.textContent.split("(")[0].trim();
+            btn.innerHTML = `${baseText} <span class="ml-1 text-xs opacity-60">(${count})</span>`;
+          });
+        };
+        const applyFilters = () => {
+          let visibleCount = 0;
+          items.forEach((item) => {
+            const categoryAttr = item.getAttribute("data-category") || "";
+            const categories = categoryAttr.split(" ");
+            const titleElement = item.querySelector(".filter-item-title");
+            const title = titleElement ? titleElement.textContent.toLowerCase() : "";
+
+            const matchesCategory = currentFilter === "all" || categories.includes(currentFilter);
+            const matchesSearch = title.includes(searchTerm);
+
+            if (matchesCategory && matchesSearch) {
+              item.classList.remove("hidden");
+              item.classList.add("filter-show");
+              item.style.animationDelay = `${visibleCount * 0.1}s`;
+              visibleCount++;
+            } else {
+              item.classList.add("hidden");
+              item.classList.remove("filter-show");
+              item.style.animationDelay = "0s";
+            }
+          });
+          if (visibleCount === 0) {
+            if (grid) grid.classList.add("hidden");
+            if (noResults) noResults.classList.remove("hidden");
+          } else {
+            if (grid) grid.classList.remove("hidden");
+            if (noResults) noResults.classList.add("hidden");
+          }
+        };
+        updateButtonCounts();
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            buttons.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentFilter = btn.getAttribute("data-filter");
+            applyFilters();
+          });
+        });
+
+        if (searchInput) {
+          searchInput.addEventListener("input", (e) => {
+            searchTerm = e.target.value.toLowerCase().trim();
+            applyFilters();
+          });
+        }
+      };
+      document.querySelectorAll("[data-filter-group]").forEach(initializeFilter);
+    });
+  </script>
+</body>
+
+</html>

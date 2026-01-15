@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forex Signal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <!-- Aos animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- Swiper Slider CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    :root {
+      --primary: #f37927;
+      --secondary: #5cf66b;
+      --font: "Roboto", sans-serif;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-gray-900 via-secondary/10 to-black overflow-hidden backdrop-blur-md">
+    <div class="text-center">
+      <!-- Glowing Spinner -->
+      <div class="relative w-22 h-22 mx-auto mb-6">
+        <!-- Outer Pulse Ring -->
+        <div class="absolute inset-0 rounded-full bg-blue-500/20 blur-2xl animate-ping"></div>
+        <!-- Main Spinning Ring -->
+        <div
+          class="absolute inset-0 rounded-full border-8 border-transparent border-t-brand/50 border-l-brand/40 animate-spin">
+        </div>
+        <!-- Inner Glow -->
+        <div
+          class="absolute inset-4 rounded-full bg-gradient-to-br from-brand/60 to-secondary/10 blur-xl animate-pulse">
+        </div>
+        <!-- Center Core -->
+        <div class="absolute inset-8 rounded-full bg-brand shadow-2xl"></div>
+      </div>
+
+      <!-- Text with Dot Animation -->
+      <h2 class="text-xl font-bold text-white mb-3">Loading Forex Signal</h2>
+      <div class="flex justify-center space-x-2">
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce"></div>
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce delay-150"></div>
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce delay-300"></div>
+      </div>
+      <p class="text-gray-400 text-sm mt-4">
+        Analyzing matches & generating winning tips...
+      </p>
+    </div>
+  </div>
+  <!-- Header -->
+  <header class="py-4 bg-white/10 backdrop-blur-md z-40 sticky top-0 border-b border-white/10">
+    <div class="container">
+      <div class="flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-brand"><img src="assets/images/logo.png" alt="logo"
+            class="max-w-50" /></a>
+        <button id="open-menu" class="lg:hidden text-gray-700">
+          <!-- Hamburger icon -->
+          <svg class="w-9 h-9 bg-brand rounded-full p-1.5" fill="none" stroke="white" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav class="hidden lg:flex space-x-4 lg:space-x-8">
+          <a href="index.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Home</a>
+          <a href="about-us.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">About</a>
+          <a href="fx-live-chart.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">FX
+            Live Charts</a>
+          <a href="forex-calender.html"
+            class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Forex Calendar</a>
+          <a href="pricing.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Pricing</a>
+          <a href="index.html#blog" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Blog</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-2.5">
+          <a href="contact-us.html" class="primary-btn"> CONTACT US </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-brand/1 hidden z-40"></div>
+  <!-- Off‑canvas menu -->
+  <aside id="canvas-menu"
+    class="fixed top-0 z-50 left-0 w-64 h-full bg-brand/10 shadow-lg transform -translate-x-full transition-transform duration-500 ease-in-out backdrop-blur-xl">
+    <div class="p-4 px-2 flex justify-between items-center border-b border-brand/50">
+      <a href="index.html" class="text-2xl font-bold text-brand"><img src="assets/images/logo.png" alt="logo"
+          class="max-w-40" /></a>
+      <button id="close-menu" class="text-white">✕</button>
+    </div>
+    <nav class="flex flex-col p-4 space-y-3">
+      <a href="index.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">Home</a>
+      <a href="about-us.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">About</a>
+      <a href="fx-live-chart.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">FX Live Charts</a>
+      <a href="forex-calender.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">Forex Calendar</a>
+      <a href="pricing.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">Pricing</a>
+      <a href="index.html#blog" class="text-white/80 hover:text-brand duration-500 ease-in-out">Blog</a>
+      <a href="contact-us.html" class="primary-btn w-full mt-6">CONTACT US</a>
+    </nav>
+  </aside>
+  <!-- Page Info Section Start -->
+  <section class="relative pt-35 pb-20 md:pt-40 md:pb-25 lg:pt-50 lg:pb-30 -mt-18 cta-grid-box">
+    <div class="container">
+
+      <ul class="flex items-center gap-1 -mt-18">
+        <li><a href="index.html" class="text-[#8F8F8F] flex items-center gap-1.5 font-medium text-lg">
+            <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M5.99821 13.0458V8.87917H9.33154V13.0458C9.33154 13.5042 9.70654 13.8792 10.1649 13.8792H12.6649C13.1232 13.8792 13.4982 13.5042 13.4982 13.0458V7.2125H14.9149C15.2982 7.2125 15.4815 6.7375 15.1899 6.4875L8.22321 0.2125C7.90654 -0.0708333 7.42321 -0.0708333 7.10654 0.2125L0.139877 6.4875C-0.143457 6.7375 0.0315432 7.2125 0.414877 7.2125H1.83154V13.0458C1.83154 13.5042 2.20654 13.8792 2.66488 13.8792H5.16488C5.62321 13.8792 5.99821 13.5042 5.99821 13.0458Z"
+                fill="#A5A5A5" />
+            </svg> Home
+          </a></li>
+        <li>
+
+          <svg width="10" height="10" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0.195 0.195842C-0.065 0.455842 -0.065 0.875841 0.195 1.13584L2.78167 3.72251L0.195 6.30918C-0.065 6.56918 -0.065 6.98918 0.195 7.24918C0.455 7.50918 0.875 7.50918 1.135 7.24918L4.195 4.18917C4.455 3.92917 4.455 3.50917 4.195 3.24917L1.135 0.189175C0.881667 -0.0641586 0.455 -0.0641585 0.195 0.195842Z"
+              fill="#797979" />
+          </svg>
+
+        </li>
+        <li class="text-brand  text-lg hover:text-brand/80 duration-500"> <a href="terms-condition.html">terms and
+            Condition</a>
+        </li>
+      </ul>
+
+      <div class="max-w-150 mx-auto text-center space-y-3" data-aos="fade-up" data-aos-duration="800">
+        <h2 class="leading-tight">terms and Condition</h2>
+        <p class="text-[18px]">
+          Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." There is no
+          one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
+        </p>
+      </div>
+    </div>
+    <!-- effect -->
+    <div class="color-effect"></div>
+    <div class="left-0 absolute top-0 -z-10 h-full w-full opacity-70 md:opacity-100">
+      <img src="assets/images/page-info-bg/page-info-thumbnail-1.jpg" alt="image" class="w-full h-full object-cover" />
+    </div>
+  </section>
+  <!-- Page Info Section End -->
+  <section class="section-gap relative">
+    <div class="container">
+      <div class="grid grid-cols-12 gap-5 lg:gap-10">
+        <div class="col-span-full md:col-span-4 lg:col-span-3">
+          <div class="sticky top-20 space-y-4">
+            <div class="border border-white/10 bg-white/5 p-2.5 lg:p-5 rounded-xl">
+              <div class="flex items-center gap-2 mb-6">
+
+                <h6>Contents</h6>
+              </div>
+              <div class="mt-4" id="table-of-contents"></div>
+            </div>
+            <div class="border border-white/10 bg-white/5 p-2.5 lg:p-5 rounded-xl">
+              <div class="">
+                <div class="flex items-center gap-2 mb-6">
+                  <h6>Category</h6>
+                </div>
+                <div class="mt-4 space-y-0.5">
+                  <!-- item -->
+                  <a href="#"
+                    class="flex items-center justify-between gap-2 py-1.5 px-2 rounded-md hover:bg-brand/50 duration-500">
+                    <span class="text-white text-lg">Football</span>
+                    <span class="text-white/70">(20)</span>
+                  </a>
+                  <!-- item -->
+                  <a href="#"
+                    class="flex items-center justify-between gap-2 py-1.5 px-2 rounded-md hover:bg-brand/50 duration-500">
+                    <span class="text-white text-lg">Cricket</span>
+                    <span class="text-white/70">(20)</span>
+                  </a>
+                  <!-- item -->
+                  <a href="#"
+                    class="flex items-center justify-between gap-2 py-1.5 px-2 rounded-md hover:bg-brand/50 duration-500">
+                    <span class="text-white text-lg">Tennis</span>
+                    <span class="text-white/70">(20)</span>
+                  </a>
+                  <!-- item -->
+                  <a href="#"
+                    class="flex items-center justify-between gap-2 py-1.5 px-2 rounded-md hover:bg-brand/50 duration-500">
+                    <span class="text-white text-lg">Badminton</span>
+                    <span class="text-white/70">(20)</span>
+                  </a>
+                  <!-- item -->
+                  <a href="#"
+                    class="flex items-center justify-between gap-2 py-1.5 px-2 rounded-md hover:bg-brand/50 duration-500">
+                    <span class="text-white text-lg">Football</span>
+                    <span class="text-white/70">(20)</span>
+                  </a>
+                  <!-- item -->
+                  <a href="#"
+                    class="flex items-center justify-between gap-2 py-1.5 px-2 rounded-md hover:bg-brand/50 duration-500">
+                    <span class="text-white text-lg">Football</span>
+                    <span class="text-white/70">(20)</span>
+                  </a>
+                  <!-- item -->
+                  <a href="#"
+                    class="flex items-center justify-between gap-2 py-1.5 px-2 rounded-md hover:bg-brand/50 duration-500">
+                    <span class="text-white text-lg">Tennis</span>
+                    <span class="text-white/70">(20)</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-full md:col-span-8 lg:col-span-9">
+          <div class="right-content border border-[#FFFFFF1A] p-6 rounded-xl backdrop-blur-lg space-y-5">
+            <h1>Terms and Condition</h1>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
+              of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+              like Aldus PageMaker including versions of Lorem Ipsum.
+
+              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
+              Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+              Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+              Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the
+              undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum"
+              (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
+              ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+              amet..", comes from a line in section 1.10.32.
+              The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections
+              1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+              original form, accompanied by English versions from the 1914 translation by H. Rackham.
+            </p>
+            <ul>
+              <li>
+                Learn how Forexs are built: how the platform works, and
+                how to improve decision-making.
+              </li>
+              <li>
+                Learn how Forexs are built: how the platform works, and
+                how that decision-making.
+              </li>
+              <li>
+                Learn how Forexs are built: how the platform works, and
+                how to improve decision.
+              </li>
+            </ul>
+            <h2>What is Lorem Ipsum?</h2>
+            <p>
+              Learn how Forexs are built, how the platform works, and how
+              to improve decision-making. Every article is written to educate,
+              clarify, and add long-term value. Contrary to popular belief,
+              Lorem Ipsum is not simply random text. It has roots in a piece
+              of classical Latin literature from 45 BC, making it over 2000
+              years old. Richard McClintock, a Latin professor at
+              Hampden-Sydney College in Virginia, looked up one of the more
+              obscure Latin words, consectetur, from a Lorem Ipsum passage,
+              and going through the cites of the word in classical literature,
+              discovered the undoubtable source.
+            </p>
+            <h2>Where does it come from?</h2>
+            <p>
+              Contrary to popular belief, Lorem Ipsum is not simply random text.
+              It has roots in a piece of classical Latin literature from 45 BC,
+              making it over 2000 years old. Richard McClintock, a Latin professor
+              at Hampden-Sydney College in Virginia, looked up one of the more
+              obscure Latin words, consectetur, from a Lorem Ipsum passage,
+              and going through the cites of the word in classical literature,
+              discovered the undoubtable source.
+            </p>
+            <h2>Why do we use it?</h2>
+            <p>
+              Learn how Forexs are built, how the platform works, and how
+              to improve decision-making. Every article is written to educate,
+              clarify, and add long-term value. Contrary to popular belief,
+              Lorem Ipsum is not simply random text. It has roots in a piece
+              of classical Latin literature from 45 BC, making it over 2000
+              years old. Richard McClintock, a Latin professor at
+              Hampden-Sydney College in Virginia, looked up one of the more
+              obscure Latin words, consectetur, from a Lorem Ipsum passage,
+              and going through the cites of the word in classical literature,
+              discovered the undoubtable source.
+            </p>
+            <h2>Where can I get some?</h2>
+            <p>
+              Learn how Forexs are built, how the platform works, and how
+              to improve decision-making. Every article is written to educate,
+              clarify, and add long-term value. Contrary to popular belief,
+              Lorem Ipsum is not simply random text. It has roots in a piece
+              of classical Latin literature from 45 BC, making it over 2000
+              years old. Richard McClintock, a Latin professor at
+              Hampden-Sydney College in Virginia, looked up one of the more
+              obscure Latin words, consectetur, from a Lorem Ipsum passage,
+              and going through the cites of the word in classical literature,
+              discovered the undoubtable source.
+            </p>
+            <h2>Why is it used?</h2>
+            <p>
+              Learn how Forexs are built, how the platform works, and how
+              to improve decision-making. Every article is written to educate,
+              clarify, and add long-term value. Contrary to popular belief,
+              Lorem Ipsum is not simply random text. It has roots in a piece
+              of classical Latin literature from 45 BC, making it over 2000
+              years old. Richard McClintock, a Latin professor at
+              Hampden-Sydney College in Virginia, looked up one of the more
+              obscure Latin words, consectetur, from a Lorem Ipsum passage,
+              and going through the cites of the word in classical literature,
+              discovered the undoubtable source.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer Start -->
+  <section class="section-gap bg-black/20">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-6">
+        <!--   About -->
+        <div class="space-y-6 md:col-span-3 lg:col-span-1 md:text-center lg:text-left">
+          <a href="index.html" class="block">
+            <img src="assets/images/logo.png" alt="logo" class="max-w-40 mx-auto lg:mx-0" />
+          </a>
+          <p class="text-gray-400 text-center md:text-start text-sm leading-7 md:max-w-2xl md:mx-auto lg:mx-0">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy.
+            Lorem Ipsum is simply dummy text of the printing typesetting
+            industry Lorem Ipsum is simply.
+          </p>
+        </div>
+        <!--   Popular Category -->
+        <div>
+          <h4 class="footer-title">Popular Category</h4>
+          <ul class="space-y-1">
+            <li><a href="fx-live-chart.html" class="footer-link">Cryipto</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Forex</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Bitcoin</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">International</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Market</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Currency Exchange</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Trading</a></li>
+          </ul>
+        </div>
+        <!--  Popular Blog -->
+        <div>
+          <h4 class="footer-title">Popular Blog</h4>
+          <ul class="space-y-1">
+            <li>
+              <a href="#" class="footer-link">'Doing daily chores can h...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">$300 Billion: Bitcoin Pri...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">As Price Eyes $10,000, Bi...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">But I must explain to mis...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">Short-term forecast for B...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">$10,000 Today? Bitcoin Pr...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">Where does it come from?</a>
+            </li>
+          </ul>
+        </div>
+
+        <!--  Contact & Social -->
+        <div>
+          <h4 class="footer-title">Contact Details</h4>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-3">
+              <img src="assets/images/icons/social-icons/call.png" alt="phone" class="w-5 h-5 object-contain" />
+              <a href="tel:1234567890" class="text-gray-400 text-sm">(480) 555-0103</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <img src="assets/images/icons/social-icons/message.png" alt="email" class="w-5 h-5 object-contain" />
+              <a href="mailto:willie.jennings@example.com" class="text-gray-400 text-sm">willie.jennings@example.com</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <img src="assets/images/icons/social-icons/location.png" alt="location"
+                class="w-5 h-5 object-contain mt-1" />
+              <a href="https://www.google.com/maps/place/2715+Ash+Dr,+San+Jose,+CA+95129"
+                class="text-gray-400 text-sm">2715 Ash Dr. San Jose,<br />South Dakota 83475</a>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center md:items-start">
+            <h4 class="text-white font-bold text-[16px] uppercase mb-4">
+              FOLLOW US
+            </h4>
+            <div class="flex gap-3">
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/facebook.png" alt="facebook"
+                  class="w-4 h-4 object-contain" />
+              </a>
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/twitter.png" alt="twitter" class="w-4 h-4 object-contain" />
+              </a>
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/instagram.png" alt="instagram"
+                  class="w-4 h-4 object-contain" />
+              </a>
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/linkedin.png" alt="linkedin"
+                  class="w-4 h-4 object-contain" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div
+        class="border-t border-white/10 mt-10 gap-4 flex flex-col md:flex-row justify-between items-center bg-[#1F2937] p-6 rounded-xl">
+        <p class="text-gray-400 text-sm">
+          © 2026
+          <a href="index.html" class="text-white hover:text-brand duration-800">Forex Signal</a>
+          . All Rights Reserved
+        </p>
+        <div class="flex gap-6">
+          <a href="privacy-policy.html" class="text-gray-400 text-sm hover:text-white transition-colors">Privacy
+            Policy</a>
+          <a href="terms-condition.html" class="text-gray-400 text-sm hover:text-white transition-colors">Cookie
+            Policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    const openBtn = document.getElementById("open-menu");
+    const closeBtn = document.getElementById("close-menu");
+    const canvasMenu = document.getElementById("canvas-menu");
+    const overlay = document.getElementById("overlay");
+    openBtn.addEventListener("click", () => {
+      canvasMenu.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    });
+    closeBtn.addEventListener("click", () => {
+      canvasMenu.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+
+    overlay.addEventListener("click", () => {
+      canvasMenu.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+  </script>
+
+  <!-- Table of Content -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const contentArea = document.querySelector(".right-content");
+      const tocContainer = document.getElementById("table-of-contents");
+      const h2Headings = contentArea.querySelectorAll("h2");
+
+      if (h2Headings.length === 0) {
+        tocContainer.innerHTML =
+          "<p>No headings available for Table of Contents.</p>";
+        return;
+      }
+
+      const tocList = document.createElement("ul");
+
+      h2Headings.forEach((heading) => {
+        const id =
+          heading.getAttribute("id") ||
+          "section-" + Math.random().toString(36).substr(2, 9);
+        heading.setAttribute("id", id);
+
+        const listItem = document.createElement("li");
+        const link = document.createElement("a");
+
+        link.href = "#" + id;
+
+        //  LIMIT TO MAX 8 WORDS
+        let originalText = heading.textContent.trim();
+        let words = originalText.split(" ");
+        if (words.length > 4) {
+          link.textContent = words.slice(0, 4).join(" ") + "...";
+        } else {
+          link.textContent = originalText;
+        }
+
+        link.classList.add("toc-link");
+
+        link.addEventListener("click", function () {
+          document
+            .querySelectorAll(".toc-link")
+            .forEach((l) => l.classList.remove("active"));
+          this.classList.add("active");
+        });
+
+        listItem.appendChild(link);
+        tocList.appendChild(listItem);
+      });
+      tocContainer.appendChild(tocList);
+      const tocLinks = document.querySelectorAll(".toc-link");
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px 0px -60% 0px",
+        threshold: 0,
+      };
+      const observer = new IntersectionObserver((entries) => {
+        let activeFound = false;
+        for (let i = entries.length - 1; i >= 0; i--) {
+          const entry = entries[i];
+          if (entry.isIntersecting) {
+            const currentId = entry.target.id;
+            if (!document.querySelector(".toc-link.active")) {
+              tocLinks.forEach((link) => link.classList.remove("active"));
+              const activeLink = document.querySelector(
+                `.toc-link[href="#${currentId}"]`
+              );
+              if (activeLink) activeLink.classList.add("active");
+            }
+            activeFound = true;
+            break;
+          }
+        }
+        if (!activeFound && tocLinks.length > 0) {
+          tocLinks.forEach((link) => link.classList.remove("active"));
+          if (window.scrollY < h2Headings[0].offsetTop) {
+            tocLinks[0].classList.add("active");
+          }
+        }
+      }, observerOptions);
+      h2Headings.forEach((heading) => observer.observe(heading));
+    });
+  </script>
+  <!-- Aos -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      mirror: true,
+      once: false,
+      offset: 100,
+      anchorPlacement: "top-bottom",
+      disableMutationObserver: false,
+    });
+  </script>
+  <!-- preloader js -->
+  <script>
+    window.addEventListener("load", () => {
+      const preloader = document.getElementById("preloader");
+      preloader.classList.add("opacity-0");
+      setTimeout(() => {
+        preloader.classList.add("hidden");
+      }, 800);
+    });
+  </script>
+</body>
+
+</html>

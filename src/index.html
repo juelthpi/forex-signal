@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forex Signal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <!-- Aos animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- Swiper Slider CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    :root {
+      --primary: #f37927;
+      --secondary: #5cf66b;
+      --font: "Roboto", sans-serif;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-gray-900 via-secondary/10 to-black overflow-hidden backdrop-blur-md">
+    <div class="text-center">
+      <!-- Glowing Spinner -->
+      <div class="relative w-22 h-22 mx-auto mb-6">
+        <!-- Outer Pulse Ring -->
+        <div class="absolute inset-0 rounded-full bg-blue-500/20 blur-2xl animate-ping"></div>
+        <!-- Main Spinning Ring -->
+        <div
+          class="absolute inset-0 rounded-full border-8 border-transparent border-t-brand/50 border-l-brand/40 animate-spin">
+        </div>
+        <!-- Inner Glow -->
+        <div
+          class="absolute inset-4 rounded-full bg-gradient-to-br from-brand/60 to-secondary/10 blur-xl animate-pulse">
+        </div>
+        <!-- Center Core -->
+        <div class="absolute inset-8 rounded-full bg-brand shadow-2xl"></div>
+      </div>
+
+      <!-- Text with Dot Animation -->
+      <h2 class="text-xl font-bold text-white mb-3">Loading Forex Signal</h2>
+      <div class="flex justify-center space-x-2">
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce"></div>
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce delay-150"></div>
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce delay-300"></div>
+      </div>
+      <p class="text-gray-400 text-sm mt-4">
+        Analyzing matches & generating winning tips...
+      </p>
+    </div>
+  </div>
+  <!-- Header -->
+  <header class="py-4 bg-white/10 backdrop-blur-md z-40 sticky top-0 border-b border-white/10">
+    <div class="container">
+      <div class="flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-brand"><img src="assets/images/logo.png" alt="logo"
+            class="max-w-50" /></a>
+        <button id="open-menu" class="lg:hidden text-gray-700">
+          <!-- Hamburger icon -->
+          <svg class="w-9 h-9 bg-brand rounded-full p-1.5" fill="none" stroke="white" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav class="hidden lg:flex space-x-4 lg:space-x-8">
+          <a href="index.html"
+            class="active text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Home</a>
+          <a href="about-us.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">About</a>
+          <a href="fx-live-chart.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">FX
+            Live Charts</a>
+          <a href="forex-calender.html"
+            class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Forex Calendar</a>
+          <a href="pricing.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Pricing</a>
+          <a href="#blog" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Blog</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-2.5">
+          <a href="contact-us.html" class="primary-btn"> CONTACT US </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-brand/1 hidden z-40"></div>
+  <!-- Off‑canvas menu -->
+  <aside id="canvas-menu"
+    class="fixed top-0 z-50 left-0 w-64 h-full bg-brand/10 shadow-lg transform -translate-x-full transition-transform duration-500 ease-in-out backdrop-blur-xl">
+    <div class="p-4 px-2 flex justify-between items-center border-b border-brand/50">
+      <a href="index.html" class="text-2xl font-bold text-brand"><img src="assets/images/logo.png" alt="logo"
+          class="max-w-40" /></a>
+      <button id="close-menu" class="text-white">✕</button>
+    </div>
+    <nav class="flex flex-col p-4 space-y-3">
+      <a href="index.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">Home</a>
+      <a href="about-us.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">About</a>
+      <a href="fx-live-chart.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">FX Live Charts</a>
+      <a href="forex-calender.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">Forex Calendar</a>
+      <a href="pricing.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">Pricing</a>
+      <a href="#" class="text-white/80 hover:text-brand duration-500 ease-in-out">Blog</a>
+      <a href="contact-us.html" class="primary-btn w-full mt-6">CONTACT US</a>
+    </nav>
+  </aside>
+  <!-- Hero Section Start -->
+  <section class="relative -mt-20">
+    <div class="container">
+      <div
+        class="pt-30 pb-25 md:pt-35 md:pb-35 lg:pt-55 lg:pb-40 max-w-150 space-y-6 mx-auto md:mx-0 text-center md:text-start">
+        <div class="inline-block">
+          <div class="flex items-center gap-2 border border-white/20 rounded-3xl py-1.5 px-3 bg-white/2">
+            <img src="assets/images/icons/live.png" alt="icon" class="max-w-5" />
+            <span class="text-white font-medium">Forex Slider</span>
+          </div>
+        </div>
+        <h1 data-aos="fade-down">Forex Slider And Crypto Analysis</h1>
+
+        <p class="text-white/80">
+          Forex Slider and Crypto Analysis provide real-time market insights,
+          trend tracking, and predictive tools, helping traders make informed
+          decisions for profitable Forex and cryptocurrency investments.
+        </p>
+        <div class="flex items-center gap-2 md:gap-3 flex-wrap justify-center md:justify-start" data-aos="zoom-in"
+          data-aos-delay="200" data-aos-duration="1200">
+          <a href="fx-live-chart.html" class="primary-btn group">
+            Join Now
+            <svg width="24" height="24" viewBox="0 0 24 24" class="group-hover:-rotate-45 duration-500" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 12L13 18M19 12L13 6M19 12L5 12" stroke="white" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- slider code  -->
+    <div class="absolute top-0 right-0 w-full h-full hero-slider-area">
+      <div class="swiper hero-slider relative hero-after h-full">
+        <div class="swiper-wrapper">
+          <!-- item -->
+          <div class="swiper-slide">
+            <img src="assets/images/hero-slider/slider-item-1.webp" alt="img"
+              class="w-full h-full max-h-205 object-cover" />
+          </div>
+          <!-- item -->
+          <div class="swiper-slide">
+            <img src="assets/images/hero-slider/slider-item-2.webp" alt="img"
+              class="w-full h-full max-h-205 object-cover" />
+          </div>
+          <!-- item -->
+          <div class="swiper-slide">
+            <img src="assets/images/hero-slider/slider-item-3.webp" alt="img"
+              class="w-full h-full max-h-205 object-cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Hero Section End -->
+  <!-- Why Extra Ordinary Start -->
+  <section class="section-gap">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-y-6 gap-x-10">
+        <div data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100" class="max-w-133 mx-auto">
+          <img src="assets/images/thumbnails/oridinary.png" alt="img" class="w-full" />
+        </div>
+        <div>
+          <!-- common heading -->
+          <div class="max-w-160 md:mx-0 mx-auto md:text-start text-center space-y-3 aos-init" data-aos="fade-up"
+            data-aos-duration="600">
+            <h3>Why we extra Ordinary</h3>
+            <p>
+              You can relay on our amazing features list and also our customer
+              services will be great experience for you without doubt and in
+              no-time and with great quality for design.You can relay on our
+              amazing features list and also our customer services will be
+              great experience for you without doubt and in no-time and with
+              great quality for design.relay on our amazing features list and
+              also our customer services will be great experience for you
+              without doubt and in no-time and with great quality for design.
+              relay on our amazing features list and also our customer
+              services features list and also our customer services
+            </p>
+          </div>
+          <div class="flex mt-7 justify-center md:justify-start aos-init" data-aos="fade-up" data-aos-duration="1100"
+            data-aos-delay="400">
+            <a href="pricing.html" class="primary-btn group">
+              Create a free account
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                class="svg-stroke-white group-hover:-rotate-60 duration-600" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 10H15.8337" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M10 4.16663L15.8333 9.99996L10 15.8333" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Why Extra Ordinary End -->
+  <!-- Why Special Start -->
+  <section class="section-gap relative">
+    <div class="container">
+      <!-- common heading -->
+      <div class="max-w-150 mx-auto text-center space-y-2" data-aos="fade-up" data-aos-duration="600">
+        <h3>Why We are Special</h3>
+        <p>
+          You can rely on our amazing features list and also our customer
+          services will be a great experience for you without doubt and in
+          no-time
+        </p>
+      </div>
+      <div class="inner-gap why-special-wrapper">
+        <!-- item -->
+        <div class="gradient-border why-special-card">
+          <div class="space-y-3.5 bg-gray-800 p-5 rounded-xl h-full">
+            <div
+              class="w-16 h-16 rounded-2xl p-2 flex justify-center items-center border border-[#9900FF66] bg-[#9900FF1A] sm:mx-0 mx-auto">
+              <img src="assets/images/icons/live.png" alt="icon" class="max-w-9 w-auto" />
+            </div>
+            <div class="sm:text-start text-center">
+              <h6>Signal Provider</h6>
+              <p class="text-sm text-soft-gray/80 mt-3">
+                90%+ is our trading signal's success rate , so you can earn
+                and grow with us. our signals will be sent to your Telegram ,
+                Email, your account in our website and very soon through sms
+                and mobile app
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- item -->
+        <div class="gradient-border why-special-card">
+          <div class="space-y-3.5 bg-gray-800 p-5 rounded-xl h-full">
+            <div
+              class="w-16 h-16 rounded-2xl p-2 flex justify-center items-center border border-[#22C55E66] bg-[#22C55E1A] sm:mx-0 mx-auto">
+              <img src="assets/images/icons/mql.png" alt="icon" class="max-w-9 w-auto" />
+            </div>
+            <div class="sm:text-start text-center">
+              <h6>MQL copy trade</h6>
+              <p class="text-sm text-soft-gray/80 mt-3">
+                join our MQL as follower, then Seat ,relax and just withdraw
+                the trading profit any time you want . our trades will
+                automatically will be copied to your real account through MQL
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- item -->
+        <div class="gradient-border why-special-card">
+          <div class="space-y-3.5 bg-gray-800 p-5 rounded-xl h-full">
+            <div
+              class="w-16 h-16 rounded-2xl p-2 flex justify-center items-center border border-[#FF4C0066] bg-[#F94F4033] sm:mx-0 mx-auto">
+              <img src="assets/images/icons/pamm.png" alt="icon" class="max-w-9 w-auto" />
+            </div>
+            <div class="sm:text-start text-center">
+              <h6>PAMM Account</h6>
+              <p class="text-sm text-soft-gray/80 mt-3">
+                Anyone can join our PAMM pool account , in chosen/suggested
+                brokers . easily find out the list of our brokers and join
+                through our link , in Broker page (main menu). its based on
+                profit sharing
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- item -->
+        <div class="gradient-border why-special-card">
+          <div class="space-y-3.5 bg-gray-800 p-5 rounded-xl h-full">
+            <div
+              class="w-16 h-16 rounded-2xl p-2 flex justify-center items-center border border-[#FFD90066] bg-[#FFD9001A] sm:mx-0 mx-auto">
+              <img src="assets/images/icons/analysis-team.png" alt="icon" class="max-w-9 w-auto" />
+            </div>
+            <div class="sm:text-start text-center">
+              <h6>Experienced Trading & Analysis Team</h6>
+              <p class="text-sm text-soft-gray/80 mt-3">
+                Provider team is contains of most experienced experts in Forex
+                Trading and analyzing
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- item -->
+        <div class="gradient-border why-special-card">
+          <div class="space-y-3.5 bg-gray-800 p-5 rounded-xl h-full">
+            <div
+              class="w-16 h-16 rounded-2xl p-2 flex justify-center items-center border border-[#0084FF99] bg-[#0084FF1A] sm:mx-0 mx-auto">
+              <img src="assets/images/icons/price.png" alt="icon" class="max-w-9 w-auto mx-auto" />
+            </div>
+            <div class="lg:text-start text-center">
+              <h6>Affordable price & High quality services</h6>
+              <p class="text-sm text-soft-gray/80 mt-3">
+                We love our clients and Proud to our high level service , that
+                anyone can afford and be successful in forex Trading
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- item -->
+        <div class="gradient-border why-special-card">
+          <div class="space-y-3.5 bg-gray-800 p-5 rounded-xl h-full">
+            <div
+              class="w-16 h-16 rounded-2xl p-2 flex justify-center items-center border border-brand/50 bg-brand/20 sm:mx-0 mx-auto">
+              <img src="assets/images/icons/premium.png" alt="icon" class="max-w-9 w-auto mx-auto" />
+            </div>
+            <div class="lg:text-start text-center">
+              <h6>Friendly and premium customer support</h6>
+              <p class="text-sm text-soft-gray/80 mt-3">
+                Provide Premium fast client support services. also monitoring
+                all support processing to make sure,will remain perfect
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- line shape -->
+    <div class="absolute -top-20 h-full w-2/3 right-0">
+      <img src="assets/images/shape/line-shape.svg" alt="shape" class="w-full h-full" />
+    </div>
+  </section>
+  <!-- Why Special End -->
+  <!-- Checkout Signal Start -->
+  <section class="section-gap bg-black">
+    <div class="container">
+      <!-- common heading -->
+      <div class="max-w-150 mx-auto text-center space-y-2" data-aos-duration=" 600">
+        <h3>Checkout our few signals</h3>
+        <p>
+          You can relay on our amazing features list and also our customer
+          services will be greatexperience for you without doubt and in
+          no-time and with great quality for design.
+        </p>
+      </div>
+      <div class="inner-gap grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Card 1: Locked -->
+        <div class="signal-card" data-aos="fade-up" data-aos-delay="100">
+          <div>
+            <div class="signal-header">
+              <h4 class="text-white font-medium text-lg">EUR/SGD</h4>
+              <span class="signal-badge badge-sell">SELL STOP</span>
+            </div>
+            <div class="signal-row">
+              <span class="signal-label">Asset</span>
+              <span class="signal-value">FOREX</span>
+            </div>
+            <div class="signal-row">
+              <span class="signal-label">Status</span>
+              <span class="signal-value text-yellow-400">TOOK PROFIT</span>
+            </div>
+          </div>
+
+          <div class="flex-grow flex justify-center items-center py-4">
+            <img src="assets/images/icons/lock.png" alt="Locked"
+              class="w-[68px] h-[90px] object-contain animate-pulse-zoom" />
+          </div>
+
+          <div>
+            <div class="signal-row">
+              <span class="signal-label">Time Frame</span>
+              <span class="signal-value">M5</span>
+            </div>
+            <div class="signal-row border-0">
+              <span class="signal-label">Result</span>
+              <span class="signal-value text-yellow-400">Pending</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Locked -->
+        <div class="signal-card" data-aos="fade-up" data-aos-delay="200">
+          <div>
+            <div class="signal-header">
+              <h4 class="text-white font-medium text-lg">AUD/CAD</h4>
+              <span class="signal-badge badge-buy">BUY</span>
+            </div>
+            <div class="signal-row">
+              <span class="signal-label">Asset</span>
+              <span class="signal-value">FOREX</span>
+            </div>
+            <div class="signal-row">
+              <span class="signal-label">Status</span>
+              <span class="signal-value text-red-500">LOSS</span>
+            </div>
+          </div>
+
+          <div class="flex-grow flex justify-center items-center py-4">
+            <img src="assets/images/icons/lock.png" alt="Locked"
+              class="w-[68px] h-[90px] object-contain animate-pulse-zoom" />
+          </div>
+
+          <div>
+            <div class="signal-row">
+              <span class="signal-label">Time Frame</span>
+              <span class="signal-value">M5</span>
+            </div>
+            <div class="signal-row border-0">
+              <span class="signal-label">Result</span>
+              <span class="signal-value text-red-500">-20 Pips</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Locked -->
+        <div class="signal-card" data-aos="fade-up" data-aos-delay="300">
+          <div>
+            <div class="signal-header">
+              <h4 class="text-white font-medium text-lg">AUD/CAD</h4>
+              <span class="signal-badge badge-buy">BUY</span>
+            </div>
+            <div class="signal-row">
+              <span class="signal-label">Asset</span>
+              <span class="signal-value">FOREX</span>
+            </div>
+            <div class="signal-row">
+              <span class="signal-label">Status</span>
+              <span class="signal-value text-red-500">LOSS</span>
+            </div>
+          </div>
+
+          <div class="flex-grow flex justify-center items-center py-4">
+            <img src="assets/images/icons/lock.png" alt="Locked"
+              class="w-[68px] h-[90px] object-contain animate-pulse-zoom" />
+          </div>
+
+          <div>
+            <div class="signal-row">
+              <span class="signal-label">Time Frame</span>
+              <span class="signal-value">M5</span>
+            </div>
+            <div class="signal-row border-0">
+              <span class="signal-label">Result</span>
+              <span class="signal-value text-red-500">-25 Pips</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Unlocked -->
+        <div class="signal-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="signal-header">
+            <h4 class="text-white font-medium text-lg">AUD/CAD</h4>
+            <span class="signal-badge badge-buy">BUY</span>
+          </div>
+          <div class="signal-row">
+            <span class="signal-label">Asset</span>
+            <span class="signal-value">FOREX</span>
+          </div>
+          <div class="signal-row">
+            <span class="signal-label">Status</span>
+            <span class="signal-value text-green-500">WIN</span>
+          </div>
+
+          <!-- Detailed Data -->
+          <div class="signal-row bg-white/5 -mx-5 px-5 border-y border-white/5 my-2">
+            <span class="signal-label text-green-500">Open Price</span>
+            <span class="signal-value">0.90265</span>
+          </div>
+          <div class="signal-row">
+            <span class="signal-label">TP 1</span>
+            <span class="signal-value text-gray-300">0.89865</span>
+          </div>
+          <div class="signal-row">
+            <span class="signal-label">TP 2</span>
+            <span class="signal-value text-gray-300">0.89865</span>
+          </div>
+          <div class="signal-row">
+            <span class="signal-label">TP 3</span>
+            <span class="signal-value text-gray-300">-</span>
+          </div>
+          <div class="signal-row bg-red-900/30 -mx-5 px-5 my-2 border-y border-red-500/20">
+            <span class="signal-label text-red-400">Stop Loss</span>
+            <span class="signal-value text-white">0.90481</span>
+          </div>
+
+          <div class="signal-row">
+            <span class="signal-label">Time Frame</span>
+            <span class="signal-value">M5</span>
+          </div>
+          <div class="signal-row border-0">
+            <span class="signal-label">Result</span>
+            <span class="signal-value text-white">+22 Pips</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Plan Section Start -->
+  <section class="section-gap">
+    <div class="container">
+      <!-- common heading -->
+      <div class="max-w-150 mx-auto text-center space-y-2" data-aos="fade-up" data-aos-duration="600">
+        <h3>Simple Pricing Plan</h3>
+        <p>We offer 100% satisfaction and Money back Guarantee</p>
+      </div>
+      <div class="inner-gap grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center">
+        <!-- price item -->
+        <div class="group bg-white/4 rounded-2xl p-2">
+          <!-- header -->
+          <div class="group-hover:bg-brand/20 duration-500 bg-white/6 py-5 text-center rounded-xl space-y-4">
+            <div class="inline-block">
+              <span class="py-1 px-6 flex text-white bg-white/10 rounded-3xl border border-white/10">Basic</span>
+            </div>
+            <h2 class="text-white font-medium">
+              FREE <sub class="text-lg">/30 days</sub>
+            </h2>
+          </div>
+          <!-- body -->
+          <div class="mt-10 px-3 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Dashboard Signal - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Whatsapp Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Telegram Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Email Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">SMS Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Phone Consulting - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Limited Currency Pairs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Instant Notification Alerts </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> 200+ Profit Pips</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <a href="#" class="primary-btn mt-10">Subscribe Now</a>
+          </div>
+        </div>
+        <!-- price item -->
+        <div class="bg-white/4 rounded-2xl p-2 group">
+          <!-- header -->
+          <div class="group-hover:bg-brand/20 duration-500 bg-white/6 py-5 text-center rounded-xl space-y-4">
+            <div class="inline-block">
+              <span class="py-1 px-6 flex text-white bg-[#537AD64D] rounded-3xl border border-indigo-500">Silver</span>
+            </div>
+            <h2 class="text-white font-medium">
+              $49 <sub class="text-lg">/45 days</sub>
+            </h2>
+          </div>
+          <!-- body -->
+          <div class="mt-10 px-3 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Dashboard Signal - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Whatsapp Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Telegram Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Email Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">SMS Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Phone Consulting - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Limited Currency Pairs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Instant Notification Alerts </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> 200+ Profit Pips</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <a href="#" class="secondary-btn border border-white/30 mt-10">Subscribe Now</a>
+          </div>
+        </div>
+        <!-- price item -->
+        <div class="bg-white/4 rounded-2xl p-2 group">
+          <!-- header -->
+          <div class="group-hover:bg-brand/20 duration-500 bg-white/6 py-5 text-center rounded-xl space-y-4">
+            <div class="inline-block">
+              <span class="py-1 px-6 flex text-white bg-[#FFD90033] rounded-3xl border border-[#FFD9004D]">Bronze</span>
+            </div>
+            <h2 class="text-white font-medium">
+              $99 <sub class="text-lg">/45 days</sub>
+            </h2>
+          </div>
+          <!-- body -->
+          <div class="mt-10 px-3 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Dashboard Signal - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Whatsapp Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Telegram Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Email Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">SMS Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Phone Consulting - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Limited Currency Pairs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Instant Notification Alerts </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> 200+ Profit Pips</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <a href="#" class="border border-white/30 secondary-btn mt-10">Subscribe Now</a>
+          </div>
+        </div>
+        <!-- price item -->
+        <div class="bg-white/4 rounded-2xl p-2 group">
+          <!-- header -->
+          <div class="group-hover:bg-brand/20 duration-500 bg-white/6 py-5 text-center rounded-xl space-y-4">
+            <div class="inline-block">
+              <span
+                class="py-1 px-6 flex text-white bg-[#0084FF33] rounded-3xl border border-[#0084FF4D]">Economy</span>
+            </div>
+            <h2 class="text-white font-medium">
+              $149 <sub class="text-lg">/60 days</sub>
+            </h2>
+          </div>
+          <!-- body -->
+          <div class="mt-10 px-3 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Dashboard Signal - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Whatsapp Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Telegram Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Email Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">SMS Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Phone Consulting - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Limited Currency Pairs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Instant Notification Alerts </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> 200+ Profit Pips</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <a href="#" class="border border-white/30 secondary-btn mt-10">Subscribe Now</a>
+          </div>
+        </div>
+        <!-- price item -->
+        <div class="bg-white/4 rounded-2xl p-2 group">
+          <!-- header -->
+          <div class="group-hover:bg-brand/20 duration-500 bg-white/6 py-5 text-center rounded-xl space-y-4">
+            <div class="inline-block">
+              <span class="py-1 px-6 flex text-white bg-brand/20 rounded-3xl border border-brand/30">Gold</span>
+            </div>
+            <h2 class="text-white font-medium">
+              $199 <sub class="text-lg">/60 days</sub>
+            </h2>
+          </div>
+          <!-- body -->
+          <div class="mt-10 px-3 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Dashboard Signal - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Whatsapp Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Telegram Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Email Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">SMS Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Phone Consulting - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Limited Currency Pairs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Instant Notification Alerts </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> 200+ Profit Pips</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <a href="#" class="border border-white/30 secondary-btn mt-10">Subscribe Now</a>
+          </div>
+        </div>
+        <!-- price item -->
+        <div class="bg-white/4 rounded-2xl p-2 group">
+          <!-- header -->
+          <div class="bg-white/6 py-5 text-center rounded-xl space-y-4 group-hover:bg-brand/20 duration-500">
+            <div class="inline-block">
+              <span class="py-1 px-6 flex text-white bg-purple-400 rounded-3xl border border-purple-900">Diamond</span>
+            </div>
+            <h2 class="text-white font-medium">
+              $199 <sub class="text-lg">/60 days</sub>
+            </h2>
+          </div>
+          <!-- body -->
+          <div class="mt-10 px-3 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Dashboard Signal - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Whatsapp Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Telegram Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Email Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">SMS Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Phone Consulting - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Limited Currency Pairs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Instant Notification Alerts </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> 200+ Profit Pips</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <a href="pricing.html" class="border border-white/30 secondary-btn mt-10">Subscribe Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 inner-gap">
+        <!-- Card 1 -->
+        <div class="stats-card group bg-white/4">
+          <h2>9</h2>
+          <div class="stats-separator"></div>
+          <img src="assets/images/icons/signal.png" class="stats-icon" alt="Signals" />
+          <div class="stats-separator"></div>
+          <p>Total Signal</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="stats-card group bg-white/4">
+          <h2>117</h2>
+          <div class="stats-separator"></div>
+          <img src="assets/images/icons/pips.png" class="stats-icon" alt="Pips" />
+          <div class="stats-separator"></div>
+          <p>Total Pips</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="stats-card group bg-white/4">
+          <h2>14</h2>
+          <div class="stats-separator"></div>
+          <img src="assets/images/icons/blog.png" class="stats-icon" alt="Blogs" />
+          <div class="stats-separator"></div>
+          <p>Total Blog</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="stats-card group bg-white/4">
+          <h2>18</h2>
+          <div class="stats-separator"></div>
+          <img src="assets/images/icons/useer.png" class="stats-icon" alt="Users" />
+          <div class="stats-separator"></div>
+          <p>Happy User</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Plan Section End -->
+  <section class="section-gap">
+    <div class="container">
+      <!-- common heading -->
+      <div class="max-w-150 mx-auto text-center space-y-2" data-aos="fade-up" data-aos-duration=" 600">
+        <h3>Grow with us</h3>
+        <p>
+          Follow our trading signals and be a winner of Forex trading. its a
+          perfect option for those who wants to earn massive income with
+          monthly of 10%-20% profit from your trading account with very low
+          risk.
+        </p>
+      </div>
+      <div class="rounded-2xl p-4 bg-white/6 border border-white/10 inner-gap">
+        <img src="assets/images/thumbnails/growing-view.png" alt="img" class="w-full h-auto rounded-xl" />
+      </div>
+      <div class="flex justify-center mt-8">
+        <a href="#"
+          class="bg-[#FFD90033] hover:bg-[#ffd90089] border duration-700 border-[#FFD9004D] rounded-full px-4 py-2 font-medium text-white">Forex
+          Screener by TradingView</a>
+      </div>
+    </div>
+  </section>
+  <!-- CTA Section Start -->
+  <section class="section-gap">
+    <div class="container">
+      <div class="cta-grid-box">
+        <div class="relative z-10 max-w-150 mx-auto text-center space-y-2" data-aos="fade-up" data-aos-duration="600">
+          <h3>100% Trusted Forex Trading Signal provider</h3>
+          <p>
+            We have most experienced Forex Experts. and always analysis charts
+            and generate trading signal to help you to make good profit.
+          </p>
+          <div class="flex justify-center mt-5">
+            <a href="pricing.html" class="primary-btn">Subscribe Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- CTA Section End -->
+  <!-- Review Start -->
+  <section class="section-gap relative">
+    <div class="container">
+      <div class="flex justify-center md:justify-between flex-wrap gap-6">
+        <!-- common heading -->
+        <div class="max-w-140 md:text-start text-center space-y-3" data-aos="fade-up" data-aos-duration="800">
+          <h3>Check what our Customers are Saying</h3>
+          <p>
+            You can relay on our amazing features list and also our customer
+            services will be great experience for you without doubt and in
+            no-time
+          </p>
+        </div>
+        <div class="hidden md:flex items-center gap-2">
+          <span
+            class="cursor-pointer h-10 w-10 bg-white/6 border border-white/12 rounded-full flex justify-center items-center hover:bg-brand duration-700"
+            id="swiper-slider-button-next">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.74993 0.75C8.74993 0.75 0.75 6.64187 0.75 8.75C0.75 10.8583 8.75 16.75 8.75 16.75"
+                stroke="white" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span
+            class="cursor-pointer h-10 w-10 bg-white/6 border border-white/12 rounded-full flex justify-center items-center hover:bg-brand"
+            id="swiper-slider-button-prev">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+              style="transform: rotate(180deg)">
+              <path d="M8.74993 0.75C8.74993 0.75 0.75 6.64187 0.75 8.75C0.75 10.8583 8.75 16.75 8.75 16.75"
+                stroke="white" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div class="swiper user-review-slider inner-gap">
+        <div class="swiper-wrapper">
+          <!-- card item -->
+          <div class="swiper-slide grid grid-cols-1 h-full">
+            <div class="gradient-border my-1">
+              <div class="bg-gray-800 p-5 rounded-xl space-y-4.5">
+                <!-- card header -->
+                <ul class="flex items-center gap-1.5">
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                </ul>
+
+                <div class="border-t border-white/5"></div>
+                <!-- card body -->
+                <div class="py-4">
+                  <p>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Suspendisse varius enim in eros elementum tristique. Duis
+                    cursus, mi quis viverra ornare."
+                  </p>
+                </div>
+                <!-- card footer -->
+                <div class="flex items-center gap-3">
+                  <img src="assets/images/user/user-1.png" class="h-15 w-15 rounded-full" alt="img" />
+                  <div>
+                    <h6 class="font-medium text-lg">Devon Lane</h6>
+                    <p class="text-white/60 text-sm">Manger, MENY</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- card item -->
+          <div class="swiper-slide grid grid-cols-1 h-full">
+            <div class="gradient-border my-1">
+              <div class="bg-gray-800 p-5 rounded-xl space-y-4.5">
+                <!-- card header -->
+                <ul class="flex items-center gap-1.5">
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                </ul>
+
+                <div class="border-t border-white/5"></div>
+                <!-- card body -->
+                <div class="py-4">
+                  <p>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Suspendisse varius enim in eros elementum tristique. Duis
+                    cursus, mi quis viverra ornare."
+                  </p>
+                </div>
+                <!-- card footer -->
+                <div class="review-footer flex items-center gap-3">
+                  <img src="assets/images/user/user-1.png" class="h-15 w-15 rounded-full" alt="img" />
+                  <div>
+                    <h6 class="font-medium text-lg">Devon Lane</h6>
+                    <p class="text-white/60 text-sm">Manger, MENY</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- card item -->
+          <div class="swiper-slide grid grid-cols-1 h-full">
+            <div class="gradient-border my-1">
+              <div class="bg-gray-800 p-5 rounded-xl space-y-4.5">
+                <!-- card header -->
+                <ul class="flex items-center gap-1.5">
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                </ul>
+
+                <div class="border-t border-white/5"></div>
+                <!-- card body -->
+                <div class="py-4">
+                  <p>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Suspendisse varius enim in eros elementum tristique. Duis
+                    cursus, mi quis viverra ornare."
+                  </p>
+                </div>
+                <!-- card footer -->
+                <div class="review-footer flex items-center gap-3">
+                  <img src="assets/images/user/user-1.png" class="h-15 w-15 rounded-full" alt="img" />
+                  <div>
+                    <h6 class="font-medium text-lg">Devon Lane</h6>
+                    <p class="text-white/60 text-sm">Manger, MENY</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- card item -->
+          <div class="swiper-slide grid grid-cols-1 h-full">
+            <div class="gradient-border my-1">
+              <div class="bg-gray-800 p-5 rounded-xl space-y-4.5">
+                <!-- card header -->
+                <ul class="flex items-center gap-1.5">
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                  <li>
+                    <img src="assets/images/icons/review-star.png" alt="img" class="w-5" />
+                  </li>
+                </ul>
+
+                <div class="border-t border-white/5"></div>
+                <!-- card body -->
+                <div class="py-4">
+                  <p>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Suspendisse varius enim in eros elementum tristique. Duis
+                    cursus, mi quis viverra ornare."
+                  </p>
+                </div>
+                <!-- card footer -->
+                <div class="review-footer flex items-center gap-3">
+                  <img src="assets/images/user/user-1.png" class="h-15 w-15 rounded-full" alt="img" />
+                  <div>
+                    <h6 class="font-medium text-lg">Devon Lane</h6>
+                    <p class="text-white/60 text-sm">Manger, MENY</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="md:hidden flex items-center gap-2 mt-6 justify-center">
+        <span
+          class="cursor-pointer h-10 w-10 border border-white/12 rounded-full flex justify-center items-center hover:bg-brand duration-700"
+          id="swiper-slider-button-next">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.74993 0.75C8.74993 0.75 0.75 6.64187 0.75 8.75C0.75 10.8583 8.75 16.75 8.75 16.75"
+              stroke="white" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span
+          class="cursor-pointer h-10 w-10 border border-white/12 rounded-full flex justify-center items-center hover:bg-brand duration-700"
+          id="swiper-slider-button-prev">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+            style="transform: rotate(180deg)">
+            <path d="M8.74993 0.75C8.74993 0.75 0.75 6.64187 0.75 8.75C0.75 10.8583 8.75 16.75 8.75 16.75"
+              stroke="white" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </section>
+  <!-- Review End -->
+  <!-- Subscribe Section Start -->
+  <section class="section-gap">
+    <div class="container">
+      <div class="cta-grid-box">
+        <div class="flex gap-x-10 justify-center lg:flex-row flex-wrap gap-y-8 items-center lg:justify-between">
+          <div class="relative z-10 max-w-150 lg:mx-0 mx-auto lg:text-start text-center space-y-2" data-aos="fade-up"
+            data-aos-duration="600">
+            <h3>Subscribe To Our Newsletter</h3>
+            <p>Dont miss any promotion or news from us</p>
+          </div>
+          <div
+            class="flex items-center gap-3 border border-white/10 rounded-full p-1 ps-4 bg-white/4 backdrop-blur-3xl">
+            <input type="email" placeholder="Enter Your Email Here"
+              class="text-white text-sm sm:text-lg border-0 outline-0" />
+            <button type="submit" class="text-sm text-nowrap px-2 sm:px-auto primary-btn cursor-pointer">
+              Subscribe Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Subscribe Section End -->
+  <!-- Blog Section Start -->
+  <section id="blog" class="section-gap">
+    <div class="container">
+      <div class="max-w-150 mx-auto text-center space-y-2" data-aos="fade-up" data-aos-duration="600">
+        <h3>Awesome with Extra Ordinary Flexibilityl</h3>
+        <p>
+          You can relay on our amazing features list and also our customer
+          services will be great experience for you without doubt and no-time
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 inner-gap">
+        <!-- blog item -->
+        <div class="space-y-4 bg-white/4 py-6 px-4 rounded-2xl h-full hover:bg-white/10 duration-700">
+          <div class="border border-white/6 bg-white/2 backdrop-blur-3xl p-1 pe-4 rounded-full inline-block">
+            <ul class="flex items-center gap-3">
+              <li class="px-3 p-1 text-white bg-white/8 rounded-full text-sm">
+                Forex
+              </li>
+              <li class="text-white/60 text-sm">
+                10 min read | 28th Oct, 2022
+              </li>
+            </ul>
+          </div>
+          <img src="assets/images/blogs/short-term-image-1.png" alt="img" class="w-full h-auto object-cover" />
+          <div class="space-y-2">
+            <h5>Short-term forecast for BTCUSD...</h5>
+            <p>
+              I have prepared a short-term cryptocurrency forecast based on
+              the Elliott wave analysis of Bitcoin, Ripple, and Ethereum..
+            </p>
+          </div>
+        </div>
+        <!-- blog item -->
+        <div class="space-y-4 bg-white/4 py-6 px-4 rounded-2xl h-full hover:bg-white/10 duration-700">
+          <div class="border border-white/6 bg-white/2 backdrop-blur-3xl p-1 pe-4 rounded-full inline-block">
+            <ul class="flex items-center gap-3">
+              <li class="px-3 p-1 text-white bg-white/8 rounded-full text-sm">
+                Forex
+              </li>
+              <li class="text-white/60 text-sm">
+                10 min read | 28th Oct, 2022
+              </li>
+            </ul>
+          </div>
+          <img src="assets/images/blogs/sample-trade-image-1.png" alt="img" class="w-full h-auto object-cover" />
+          <div class="space-y-2">
+            <h5>Short-term forecast for BTCUSD...</h5>
+            <p>
+              I have prepared a short-term cryptocurrency forecast based on
+              the Elliott wave analysis of Bitcoin, Ripple, and Ethereum..
+            </p>
+          </div>
+        </div>
+        <!-- blog item -->
+        <div class="space-y-4 bg-white/4 py-6 px-4 rounded-2xl h-full hover:bg-white/10 duration-700">
+          <div class="border border-white/6 bg-white/2 backdrop-blur-3xl p-1 pe-4 rounded-full inline-block">
+            <ul class="flex items-center gap-3">
+              <li class="px-3 p-1 text-white bg-white/8 rounded-full text-sm">
+                Forex
+              </li>
+              <li class="text-white/60 text-sm">
+                10 min read | 28th Oct, 2022
+              </li>
+            </ul>
+          </div>
+          <img src="assets/images/blogs/btc-image.png" alt="img" class="w-full h-auto object-cover" />
+          <div class="space-y-2">
+            <h5>Short-term forecast for BTCUSD...</h5>
+            <p>
+              I have prepared a short-term cryptocurrency forecast based on
+              the Elliott wave analysis of Bitcoin, Ripple, and Ethereum..
+            </p>
+          </div>
+        </div>
+        <!-- blog item -->
+        <div class="space-y-4 bg-white/4 py-6 px-4 rounded-2xl h-full hover:bg-white/10 duration-700">
+          <div class="border border-white/6 bg-white/2 backdrop-blur-3xl p-1 pe-4 rounded-full inline-block">
+            <ul class="flex items-center gap-3">
+              <li class="px-3 p-1 text-white bg-white/8 rounded-full text-sm">
+                Forex
+              </li>
+              <li class="text-white/60 text-sm">
+                10 min read | 28th Oct, 2022
+              </li>
+            </ul>
+          </div>
+          <img src="assets/images/blogs/short-term-image-1.png" alt="img" class="w-full h-auto object-cover" />
+          <div class="space-y-2">
+            <h5>Short-term forecast for BTCUSD...</h5>
+            <p>
+              I have prepared a short-term cryptocurrency forecast based on
+              the Elliott wave analysis of Bitcoin, Ripple, and Ethereum..
+            </p>
+          </div>
+        </div>
+        <!-- blog item -->
+        <div class="space-y-4 bg-white/4 py-6 px-4 rounded-2xl h-full hover:bg-white/10 duration-700">
+          <div class="border border-white/6 bg-white/2 backdrop-blur-3xl p-1 pe-4 rounded-full inline-block">
+            <ul class="flex items-center gap-3">
+              <li class="px-3 p-1 text-white bg-white/8 rounded-full text-sm">
+                Forex
+              </li>
+              <li class="text-white/60 text-sm">
+                10 min read | 28th Oct, 2022
+              </li>
+            </ul>
+          </div>
+          <img src="assets/images/blogs/sample-trade-image-1.png" alt="img" class="w-full h-auto object-cover" />
+          <div class="space-y-2">
+            <h5>Short-term forecast for BTCUSD...</h5>
+            <p>
+              I have prepared a short-term cryptocurrency forecast based on
+              the Elliott wave analysis of Bitcoin, Ripple, and Ethereum..
+            </p>
+          </div>
+        </div>
+        <!-- blog item -->
+        <div class="space-y-4 bg-white/4 py-6 px-4 rounded-2xl h-full hover:bg-white/10 duration-700">
+          <div class="border border-white/6 bg-white/2 backdrop-blur-3xl p-1 pe-4 rounded-full inline-block">
+            <ul class="flex items-center gap-3">
+              <li class="px-3 p-1 text-white bg-white/8 rounded-full text-sm">
+                Forex
+              </li>
+              <li class="text-white/60 text-sm">
+                10 min read | 28th Oct, 2022
+              </li>
+            </ul>
+          </div>
+          <img src="assets/images/blogs/btc-image.png" alt="img" class="w-full h-auto object-cover" />
+          <div class="space-y-2">
+            <h5>Short-term forecast for BTCUSD...</h5>
+            <p>
+              I have prepared a short-term cryptocurrency forecast based on
+              the Elliott wave analysis of Bitcoin, Ripple, and Ethereum..
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center mt-10">
+        <a href="#blog" class="primary-btn cursor-pointer">View All</a>
+      </div>
+    </div>
+  </section>
+  <!-- Blog Section End -->
+  <!-- Footer Section Start -->
+  <section class="section-gap bg-black/20">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-6">
+        <!--   About -->
+        <div class="space-y-6 md:col-span-3 lg:col-span-1 md:text-center lg:text-left">
+          <a href="index.html" class="block">
+            <img src="assets/images/logo.png" alt="logo" class="max-w-40 mx-auto lg:mx-0" />
+          </a>
+          <p class="text-gray-400 text-center md:text-start text-sm leading-7 md:max-w-2xl md:mx-auto lg:mx-0">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy.
+            Lorem Ipsum is simply dummy text of the printing typesetting
+            industry Lorem Ipsum is simply.
+          </p>
+        </div>
+
+        <!--   Popular Category -->
+        <div>
+          <h4 class="footer-title">Popular Category</h4>
+          <ul class="space-y-1">
+            <li><a href="fx-live-chart.html" class="footer-link">Cryipto</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Forex</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Bitcoin</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">International</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Market</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Currency Exchange</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Trading</a></li>
+          </ul>
+        </div>
+
+        <!--  Popular Blog -->
+        <div>
+          <h4 class="footer-title">Popular Blog</h4>
+          <ul class="space-y-1">
+            <li>
+              <a href="#" class="footer-link">'Doing daily chores can h...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">$300 Billion: Bitcoin Pri...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">As Price Eyes $10,000, Bi...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">But I must explain to mis...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">Short-term forecast for B...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">$10,000 Today? Bitcoin Pr...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">Where does it come from?</a>
+            </li>
+          </ul>
+        </div>
+
+        <!--  Contact & Social -->
+        <div>
+          <h4 class="footer-title">Contact Details</h4>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-3">
+              <img src="assets/images/icons/social-icons/call.png" alt="phone" class="w-5 h-5 object-contain" />
+              <a href="tel:1234567890" class="text-gray-400 text-sm">(480) 555-0103</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <img src="assets/images/icons/social-icons/message.png" alt="email" class="w-5 h-5 object-contain" />
+              <a href="mailto:willie.jennings@example.com" class="text-gray-400 text-sm">willie.jennings@example.com</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <img src="assets/images/icons/social-icons/location.png" alt="location"
+                class="w-5 h-5 object-contain mt-1" />
+              <a href="https://www.google.com/maps/place/2715+Ash+Dr,+San+Jose,+CA+95129"
+                class="text-gray-400 text-sm">2715 Ash Dr. San Jose,<br />South Dakota 83475</a>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center md:items-start">
+            <h4 class="text-white font-bold text-[16px] uppercase mb-4">
+              FOLLOW US
+            </h4>
+            <div class="flex gap-3">
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/facebook.png" alt="facebook"
+                  class="w-4 h-4 object-contain" />
+              </a>
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/twitter.png" alt="twitter" class="w-4 h-4 object-contain" />
+              </a>
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/instagram.png" alt="instagram"
+                  class="w-4 h-4 object-contain" />
+              </a>
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/linkedin.png" alt="linkedin"
+                  class="w-4 h-4 object-contain" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div
+        class="border-t border-white/10 mt-10 gap-4 flex flex-col md:flex-row justify-between items-center bg-[#1F2937] p-6 rounded-xl">
+        <p class="text-gray-400 text-sm">
+          © 2026
+          <a href="index.html" class="text-white hover:text-brand duration-800">Forex Signal</a>
+          . All Rights Reserved
+        </p>
+        <div class="flex gap-6">
+          <a href="privacy-policy.html" class="text-gray-400 text-sm hover:text-white transition-colors">Privacy
+            Policy</a>
+          <a href="terms-condition.html" class="text-gray-400 text-sm hover:text-white transition-colors">Cookie
+            Policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer Section End -->
+
+  <script src="assets/js/accordion.js"></script>
+  <script src="assets/js/tab.js"></script>
+
+  <script>
+    const openBtn = document.getElementById("open-menu");
+    const closeBtn = document.getElementById("close-menu");
+    const canvasMenu = document.getElementById("canvas-menu");
+    const overlay = document.getElementById("overlay");
+    openBtn.addEventListener("click", () => {
+      canvasMenu.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    });
+    closeBtn.addEventListener("click", () => {
+      canvasMenu.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+
+    overlay.addEventListener("click", () => {
+      canvasMenu.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+  </script>
+  <!-- filter js -->
+  <script>
+    document.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("filter-btn")) return;
+
+      const btn = e.target;
+      const container = btn.closest(".filter-container");
+      const filterButtons = container.querySelectorAll(".filter-btn");
+      const filterItems = container.querySelectorAll(".filter-item");
+
+      // active button
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.dataset.filter;
+
+      filterItems.forEach((item) => {
+        const categories = item.dataset.category.split(" ");
+        if (filter === "all" || categories.includes(filter)) {
+          item.classList.remove("filter-hide");
+          item.classList.add("filter-show");
+        } else {
+          item.classList.add("filter-hide");
+          item.classList.remove("filter-show");
+        }
+      });
+    });
+  </script>
+
+  <!-- Swiper slider JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- user review slider js -->
+  <script>
+    const userReviewSlider = new Swiper(".user-review-slider", {
+      slidesPerView: 3,
+      centeredSlides: true,
+      loop: true,
+      speed: 4000,
+      spaceBetween: 20,
+      autoplay: true,
+
+      autoplay: {
+        delay: 1000,
+        disableOnInteraction: true,
+      },
+      navigation: {
+        nextEl: "#swiper-slider-button-next",
+        prevEl: "#swiper-slider-button-prev",
+      },
+      grabCursor: true,
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+
+        768: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  </script>
+  <!-- hero slider js -->
+  <script>
+    const heroSlider = new Swiper(".hero-slider", {
+      slidesPerView: 1,
+      centeredSlides: true,
+      loop: true,
+      speed: 3200,
+
+      effect: "fade",
+      fadeEffect: {
+        crossFade: true,
+      },
+
+      autoplay: {
+        delay: 1500,
+        disableOnInteraction: false,
+      },
+    });
+  </script>
+  <!-- Aos -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      mirror: true,
+      once: false,
+      offset: 120,
+      anchorPlacement: "top-bottom",
+      disableMutationObserver: false,
+    });
+  </script>
+  <!-- preloader js -->
+  <script>
+    window.addEventListener("load", () => {
+      const preloader = document.getElementById("preloader");
+      preloader.classList.add("opacity-0");
+      setTimeout(() => {
+        preloader.classList.add("hidden");
+      }, 800);
+    });
+  </script>
+</body>
+
+</html>

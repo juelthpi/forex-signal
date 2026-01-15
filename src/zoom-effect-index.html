@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forex Signal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <!-- Aos animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- Swiper Slider CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    :root {
+      --primary: #f37927;
+      --secondary: #5cf66b;
+      --font: "Roboto", sans-serif;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-gray-900 via-secondary/10 to-black overflow-hidden backdrop-blur-md">
+    <div class="text-center">
+      <!-- Glowing Spinner -->
+      <div class="relative w-22 h-22 mx-auto mb-6">
+        <!-- Outer Pulse Ring -->
+        <div class="absolute inset-0 rounded-full bg-blue-500/20 blur-2xl animate-ping"></div>
+        <!-- Main Spinning Ring -->
+        <div
+          class="absolute inset-0 rounded-full border-8 border-transparent border-t-brand/50 border-l-brand/40 animate-spin">
+        </div>
+        <!-- Inner Glow -->
+        <div
+          class="absolute inset-4 rounded-full bg-gradient-to-br from-brand/60 to-secondary/10 blur-xl animate-pulse">
+        </div>
+        <!-- Center Core -->
+        <div class="absolute inset-8 rounded-full bg-brand shadow-2xl"></div>
+      </div>
+
+      <!-- Text with Dot Animation -->
+      <h2 class="text-xl font-bold text-white mb-3">Loading Forexs</h2>
+      <div class="flex justify-center space-x-2">
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce"></div>
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce delay-150"></div>
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce delay-300"></div>
+      </div>
+      <p class="text-gray-400 text-sm mt-4">
+        Analyzing matches & generating winning tips...
+      </p>
+    </div>
+  </div>
+  <!-- Header -->
+  <header class="py-4 bg-white/10 backdrop-blur-md z-40 sticky top-0 border-b border-white/10">
+    <div class="container">
+      <div class="flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-brand"><img src="assets/images/logo.png" alt="logo"
+            class="max-w-50" /></a>
+        <button id="open-menu" class="lg:hidden text-gray-700">
+          <!-- Hamburger icon -->
+          <svg class="w-9 h-9 bg-brand rounded-full p-1.5" fill="none" stroke="white" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav class="hidden lg:flex space-x-4 lg:space-x-8">
+          <a href="index.html"
+            class="active text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Home</a>
+          <a href="about-us.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">About</a>
+          <a href="live-Forex.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">FX Live
+            Charts</a>
+          <a href="#" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Forex Calendar</a>
+          <a href="pricing.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Pricing</a>
+          <a href="blog.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Blog</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-2.5">
+          <a href="sign-up.html" class="primary-btn"> CONTACT US </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-brand/1 hidden z-40"></div>
+  <!-- Off‑canvas menu -->
+  <aside id="canvas-menu"
+    class="fixed top-0 z-50 left-0 w-64 h-full bg-brand/10 shadow-lg transform -translate-x-full transition-transform duration-500 ease-in-out backdrop-blur-xl">
+    <div class="p-4 px-2 flex justify-between items-center border-b border-brand/50">
+      <a href="#" class="text-2xl font-bold text-brand"><img src="assets/images/logo.png" alt="logo"
+          class="max-w-40" /></a>
+      <button id="close-menu" class="text-white">✕</button>
+    </div>
+    <nav class="flex flex-col p-4 space-y-3">
+      <a href="#" class="text-soft-gray hover:text-brand duration-500 ease-in-out">Home</a>
+      <a href="#" class="text-soft-gray hover:text-brand duration-500 ease-in-out">About</a>
+      <a href="#" class="text-soft-gray hover:text-brand duration-500 ease-in-out">Live Forexs</a>
+      <a href="#" class="text-soft-gray hover:text-brand duration-500 ease-in-out">Pricing</a>
+      <a href="#" class="text-soft-gray hover:text-brand duration-500 ease-in-out">Blog</a>
+      <a href="#" class="primary-btn w-full mt-6">Sign Up</a>
+      <div class="from-brand to-secondary bg-linear-to-r p-px rounded-full">
+        <a href="login.html" class="secondary-btn group">Login </a>
+      </div>
+    </nav>
+  </aside>
+  <!-- Hero Section Start -->
+  <section class="relative pt-30 pb-15 md:pt-35 md:pb-20 lg:pt-45 lg:pb-30 -mt-18">
+    <div class="container">
+      <div class="max-w-150 space-y-6 mx-auto md:mx-0 text-center md:text-start">
+        <div class="inline-block">
+          <div class="flex items-center gap-2 border border-white/20 rounded-3xl py-1.5 px-3 bg-white/2">
+            <img src="assets/images/icons/live.png" alt="icon" />
+            <span class="text-white font-medium">Forex Slider</span>
+          </div>
+        </div>
+        <h1 data-aos="fade-down">Forex Slider And Crypto Analysis</h1>
+
+        <p class="text-white/80">Forex Slider and Crypto Analysis</p>
+        <div class="flex items-center gap-2 md:gap-3 flex-wrap justify-center md:justify-start" data-aos="zoom-in"
+          data-aos-delay="200" data-aos-duration="1200">
+          <a href="live-Forex.html" class="primary-btn group">
+            Join Now
+            <svg width="24" height="24" viewBox="0 0 24 24" class="group-hover:-rotate-45 duration-500" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 12L13 18M19 12L13 6M19 12L5 12" stroke="white" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <!-- <div
+              class="from-brand to-secondary bg-linear-to-r p-px rounded-full"
+            >
+              <a href="pricing.html" class="secondary-btn group"
+                >View Premium Plans
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  .
+                  fill="none"
+                  class="svg-stroke-white group-hover:-rotate-60 duration-600"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 10H15.8337"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10 4.16663L15.8333 9.99996L10 15.8333"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- slider code  -->
+    <div class="absolute mt-15 top-1/2 -translate-y-[50%] right-0 w-1/2 hero-slider-area hidden md:block">
+      <div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+          <!-- item -->
+          <div class="swiper-slide">
+            <img src="assets/images/slider/slide-item-1.png" alt="img" class="w-full" />
+          </div>
+          <!-- item -->
+          <div class="swiper-slide">
+            <img src="assets/images/slider/slide-item-5.png" alt="img" class="w-full" />
+          </div>
+          <!-- item -->
+          <div class="swiper-slide">
+            <img src="assets/images/slider/slide-item-3.png" alt="img" class="w-full" />
+          </div>
+          <!-- item -->
+          <div class="swiper-slide">
+            <img src="assets/images/slider/slide-item-4.png" alt="img" class="w-full" />
+          </div>
+          <!-- item -->
+          <div class="swiper-slide">
+            <img src="assets/images/slider/slide-item-2.png" alt="img" class="w-full" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute top-0 -z-10 h-full w-full opacity-70 md:opacity-40">
+      <img src="assets/images/shape/hero-line-shape.svg" alt="image" class="w-full" />
+    </div>
+  </section>
+  <!-- Hero Section End -->
+
+  <script src="assets/js/accordion.js"></script>
+  <script src="assets/js/tab.js"></script>
+
+  <script>
+    const openBtn = document.getElementById("open-menu");
+    const closeBtn = document.getElementById("close-menu");
+    const canvasMenu = document.getElementById("canvas-menu");
+    const overlay = document.getElementById("overlay");
+    openBtn.addEventListener("click", () => {
+      canvasMenu.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    });
+    closeBtn.addEventListener("click", () => {
+      canvasMenu.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+
+    overlay.addEventListener("click", () => {
+      canvasMenu.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+  </script>
+  <!-- filter js -->
+  <script>
+    document.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("filter-btn")) return;
+
+      const btn = e.target;
+      const container = btn.closest(".filter-container");
+      const filterButtons = container.querySelectorAll(".filter-btn");
+      const filterItems = container.querySelectorAll(".filter-item");
+
+      // active button
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.dataset.filter;
+
+      filterItems.forEach((item) => {
+        const categories = item.dataset.category.split(" ");
+        if (filter === "all" || categories.includes(filter)) {
+          item.classList.remove("filter-hide");
+          item.classList.add("filter-show");
+        } else {
+          item.classList.add("filter-hide");
+          item.classList.remove("filter-show");
+        }
+      });
+    });
+  </script>
+
+  <!-- Swiper slider JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- user review slider js -->
+  <script>
+    const userReviewSlider = new Swiper(".user-review-slider", {
+      slidesPerView: 3,
+      centeredSlides: true,
+      loop: true,
+      speed: 1000,
+      spaceBetween: 20,
+      autoplay: false,
+
+      // autoplay: {
+      //   delay: 2000,
+      //   disableOnInteraction: false,
+      // },
+      navigation: {
+        nextEl: "#swiper-slider-button-next",
+        prevEl: "#swiper-slider-button-prev",
+      },
+      grabCursor: true,
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+
+        768: {
+          slidesPerView: 2,
+        },
+      },
+    });
+  </script>
+  <!-- hero slider js -->
+  <script>
+    const heroSlider = new Swiper(".hero-slider", {
+      slidesPerView: 1,
+      centeredSlides: true,
+      loop: true,
+      speed: 3200,
+
+      effect: "fade",
+      fadeEffect: {
+        crossFade: true,
+      },
+
+      autoplay: {
+        delay: 1500,
+        disableOnInteraction: false,
+      },
+    });
+  </script>
+  <!-- Aos -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      mirror: false,
+      once: false,
+      offset: 120,
+      anchorPlacement: "top-bottom",
+      disableMutationObserver: false,
+    });
+  </script>
+  <!-- preloader js -->
+  <script>
+    window.addEventListener("load", () => {
+      const preloader = document.getElementById("preloader");
+      preloader.classList.add("opacity-0");
+      setTimeout(() => {
+        preloader.classList.add("hidden");
+      }, 800);
+    });
+  </script>
+</body>
+
+</html>

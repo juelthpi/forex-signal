@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forex Signal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <!-- Aos animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- Swiper Slider CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    :root {
+      --primary: #f37927;
+      --secondary: #5cf66b;
+      --font: "Roboto", sans-serif;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-gray-900 via-secondary/10 to-black overflow-hidden backdrop-blur-md">
+    <div class="text-center">
+      <!-- Glowing Spinner -->
+      <div class="relative w-22 h-22 mx-auto mb-6">
+        <!-- Outer Pulse Ring -->
+        <div class="absolute inset-0 rounded-full bg-blue-500/20 blur-2xl animate-ping"></div>
+        <!-- Main Spinning Ring -->
+        <div
+          class="absolute inset-0 rounded-full border-8 border-transparent border-t-brand/50 border-l-brand/40 animate-spin">
+        </div>
+        <!-- Inner Glow -->
+        <div
+          class="absolute inset-4 rounded-full bg-gradient-to-br from-brand/60 to-secondary/10 blur-xl animate-pulse">
+        </div>
+        <!-- Center Core -->
+        <div class="absolute inset-8 rounded-full bg-brand shadow-2xl"></div>
+      </div>
+
+      <!-- Text with Dot Animation -->
+      <h2 class="text-xl font-bold text-white mb-3">Loading Forex Signal</h2>
+      <div class="flex justify-center space-x-2">
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce"></div>
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce delay-150"></div>
+        <div class="w-3 h-3 bg-brand/50 rounded-full animate-bounce delay-300"></div>
+      </div>
+      <p class="text-gray-400 text-sm mt-4">
+        Analyzing matches & generating winning tips...
+      </p>
+    </div>
+  </div>
+  <!-- Header -->
+  <header class="py-4 bg-white/10 backdrop-blur-md z-40 sticky top-0 border-b border-white/10">
+    <div class="container">
+      <div class="flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-brand"><img src="assets/images/logo.png" alt="logo"
+            class="max-w-50" /></a>
+        <button id="open-menu" class="lg:hidden text-gray-700">
+          <!-- Hamburger icon -->
+          <svg class="w-9 h-9 bg-brand rounded-full p-1.5" fill="none" stroke="white" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav class="hidden lg:flex space-x-4 lg:space-x-8">
+          <a href="index.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Home</a>
+          <a href="about-us.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">About</a>
+          <a href="fx-live-chart.html" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">FX
+            Live Charts</a>
+          <a href="forex-calender.html"
+            class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Forex Calendar</a>
+          <a href="pricing.html"
+            class="active text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Pricing</a>
+          <a href="index.html#blog" class="text-white/80 font-medium hover:text-brand duration-500 ease-in-out">Blog</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-2.5">
+          <a href="contact-us.html" class="primary-btn"> CONTACT US </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-brand/1 hidden z-40"></div>
+  <!-- Off‑canvas menu -->
+  <aside id="canvas-menu"
+    class="fixed top-0 z-50 left-0 w-64 h-full bg-brand/10 shadow-lg transform -translate-x-full transition-transform duration-500 ease-in-out backdrop-blur-xl">
+    <div class="p-4 px-2 flex justify-between items-center border-b border-brand/50">
+      <a href="index.html" class="text-2xl font-bold text-brand"><img src="assets/images/logo.png" alt="logo"
+          class="max-w-40" /></a>
+      <button id="close-menu" class="text-white">✕</button>
+    </div>
+    <nav class="flex flex-col p-4 space-y-3">
+      <a href="index.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">Home</a>
+      <a href="about-us.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">About</a>
+      <a href="fx-live-chart.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">FX Live Charts</a>
+      <a href="forex-calender.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">Forex Calendar</a>
+      <a href="pricing.html" class="text-white/80 hover:text-brand duration-500 ease-in-out">Pricing</a>
+      <a href="index.html#blog" class="text-white/80 hover:text-brand duration-500 ease-in-out">Blog</a>
+      <a href="contact-us.html" class="primary-btn w-full mt-6">CONTACT US</a>
+    </nav>
+  </aside>
+  <!-- Page Info Section Start -->
+  <section class="relative pt-35 pb-20 md:pt-40 md:pb-25 lg:pt-50 lg:pb-30 -mt-18 cta-grid-box">
+    <div class="container">
+
+      <ul class="flex items-center gap-1 -mt-18">
+        <li><a href="index.html" class="text-[#8F8F8F] flex items-center gap-1.5 font-medium text-lg">
+            <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M5.99821 13.0458V8.87917H9.33154V13.0458C9.33154 13.5042 9.70654 13.8792 10.1649 13.8792H12.6649C13.1232 13.8792 13.4982 13.5042 13.4982 13.0458V7.2125H14.9149C15.2982 7.2125 15.4815 6.7375 15.1899 6.4875L8.22321 0.2125C7.90654 -0.0708333 7.42321 -0.0708333 7.10654 0.2125L0.139877 6.4875C-0.143457 6.7375 0.0315432 7.2125 0.414877 7.2125H1.83154V13.0458C1.83154 13.5042 2.20654 13.8792 2.66488 13.8792H5.16488C5.62321 13.8792 5.99821 13.5042 5.99821 13.0458Z"
+                fill="#A5A5A5" />
+            </svg> Home
+          </a></li>
+        <li>
+
+          <svg width="10" height="10" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0.195 0.195842C-0.065 0.455842 -0.065 0.875841 0.195 1.13584L2.78167 3.72251L0.195 6.30918C-0.065 6.56918 -0.065 6.98918 0.195 7.24918C0.455 7.50918 0.875 7.50918 1.135 7.24918L4.195 4.18917C4.455 3.92917 4.455 3.50917 4.195 3.24917L1.135 0.189175C0.881667 -0.0641586 0.455 -0.0641585 0.195 0.195842Z"
+              fill="#797979" />
+          </svg>
+
+        </li>
+        <li class="text-brand  text-lg hover:text-brand/80 duration-500"> <a href="pricing.html">Pricing</a>
+        </li>
+      </ul>
+
+      <div class="max-w-150 mx-auto text-center space-y-3" data-aos="fade-up" data-aos-duration="800">
+        <h2 class="leading-tight">Pricing</h2>
+        <p class="text-[18px]">
+          Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." There is no
+          one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
+        </p>
+      </div>
+    </div>
+    <!-- effect -->
+    <div class="color-effect"></div>
+    <div class="left-0 absolute top-0 -z-10 h-full w-full opacity-70 md:opacity-100">
+      <img src="assets/images/page-info-bg/page-info-thumbnail-1.jpg" alt="image" class="w-full h-full object-cover" />
+    </div>
+  </section>
+
+  <!-- Plan Section Start -->
+  <section class="section-gap">
+    <div class="container">
+      <!-- common heading -->
+      <div class="max-w-150 mx-auto text-center space-y-2" data-aos="fade-up" data-aos-duration="600">
+        <h3>Simple Pricing Plan</h3>
+        <p>We offer 100% satisfaction and Money back Guarantee</p>
+      </div>
+      <div class="inner-gap grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center">
+        <!-- price item -->
+        <div class="group bg-white/4 rounded-2xl p-2">
+          <!-- header -->
+          <div class="group-hover:bg-brand/20 duration-500 bg-white/6 py-5 text-center rounded-xl space-y-4">
+            <div class="inline-block">
+              <span class="py-1 px-6 flex text-white bg-white/10 rounded-3xl border border-white/10">Basic</span>
+            </div>
+            <h2 class="text-white font-medium">
+              FREE <sub class="text-lg">/30 days</sub>
+            </h2>
+          </div>
+          <!-- body -->
+          <div class="mt-10 px-3 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Dashboard Signal - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Whatsapp Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Telegram Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Email Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">SMS Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Phone Consulting - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Limited Currency Pairs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Instant Notification Alerts </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> 200+ Profit Pips</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <a href="contact-us.html" class="primary-btn">Subscribe Now</a>
+          </div>
+        </div>
+        <!-- price item -->
+        <div class="bg-white/4 rounded-2xl p-2 group">
+          <!-- header -->
+          <div class="group-hover:bg-brand/20 duration-500 bg-white/6 py-5 text-center rounded-xl space-y-4">
+            <div class="inline-block">
+              <span class="py-1 px-6 flex text-white bg-[#537AD64D] rounded-3xl border border-indigo-500">Silver</span>
+            </div>
+            <h2 class="text-white font-medium">
+              $49 <sub class="text-lg">/45 days</sub>
+            </h2>
+          </div>
+          <!-- body -->
+          <div class="mt-10 px-3 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Dashboard Signal - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Whatsapp Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Telegram Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Email Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">SMS Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Phone Consulting - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Limited Currency Pairs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Instant Notification Alerts </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> 200+ Profit Pips</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <a href="contact-us.html" class="border border-white/30 secondary-btn mt-10">Subscribe Now</a>
+          </div>
+        </div>
+        <!-- price item -->
+        <div class="bg-white/4 rounded-2xl p-2 group">
+          <!-- header -->
+          <div class="group-hover:bg-brand/20 duration-500 bg-white/6 py-5 text-center rounded-xl space-y-4">
+            <div class="inline-block">
+              <span class="py-1 px-6 flex text-white bg-[#FFD90033] rounded-3xl border border-[#FFD9004D]">Bronze</span>
+            </div>
+            <h2 class="text-white font-medium">
+              $99 <sub class="text-lg">/45 days</sub>
+            </h2>
+          </div>
+          <!-- body -->
+          <div class="mt-10 px-3 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Dashboard Signal - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Whatsapp Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Telegram Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Email Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">SMS Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Phone Consulting - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Limited Currency Pairs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Instant Notification Alerts </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> 200+ Profit Pips</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <a href="#" class="border border-white/30 secondary-btn mt-10">Subscribe Now</a>
+          </div>
+        </div>
+        <!-- price item -->
+        <div class="bg-white/4 rounded-2xl p-2 group">
+          <!-- header -->
+          <div class="group-hover:bg-brand/20 duration-500 bg-white/6 py-5 text-center rounded-xl space-y-4">
+            <div class="inline-block">
+              <span
+                class="py-1 px-6 flex text-white bg-[#0084FF33] rounded-3xl border border-[#0084FF4D]">Economy</span>
+            </div>
+            <h2 class="text-white font-medium">
+              $149 <sub class="text-lg">/60 days</sub>
+            </h2>
+          </div>
+          <!-- body -->
+          <div class="mt-10 px-3 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Dashboard Signal - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Whatsapp Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Telegram Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Email Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">SMS Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Phone Consulting - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Limited Currency Pairs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Instant Notification Alerts </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> 200+ Profit Pips</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <a href="#" class="border border-white/30 secondary-btn mt-10">Subscribe Now</a>
+          </div>
+        </div>
+        <!-- price item -->
+        <div class="bg-white/4 rounded-2xl p-2 group">
+          <!-- header -->
+          <div class="group-hover:bg-brand/20 duration-500 bg-white/6 py-5 text-center rounded-xl space-y-4">
+            <div class="inline-block">
+              <span class="py-1 px-6 flex text-white bg-brand/20 rounded-3xl border border-brand/30">Gold</span>
+            </div>
+            <h2 class="text-white font-medium">
+              $199 <sub class="text-lg">/60 days</sub>
+            </h2>
+          </div>
+          <!-- body -->
+          <div class="mt-10 px-3 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Dashboard Signal - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Whatsapp Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Telegram Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Email Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">SMS Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Phone Consulting - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Limited Currency Pairs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Instant Notification Alerts </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> 200+ Profit Pips</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <a href="#" class="border border-white/30 secondary-btn mt-10">Subscribe Now</a>
+          </div>
+        </div>
+        <!-- price item -->
+        <div class="bg-white/4 rounded-2xl p-2 group">
+          <!-- header -->
+          <div class="bg-white/6 py-5 text-center rounded-xl space-y-4 group-hover:bg-brand/20 duration-500">
+            <div class="inline-block">
+              <span class="py-1 px-6 flex text-white bg-purple-400 rounded-3xl border border-purple-900">Diamond</span>
+            </div>
+            <h2 class="text-white font-medium">
+              $199 <sub class="text-lg">/60 days</sub>
+            </h2>
+          </div>
+          <!-- body -->
+          <div class="mt-10 px-3 space-y-3">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Dashboard Signal - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Whatsapp Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Telegram Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Email Alert - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">SMS Alert - YES </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Phone Consulting - YES</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> Limited Currency Pairs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">Instant Notification Alerts </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white"> 200+ Profit Pips</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img src="assets/images/icons/checked.png" alt="icon" />
+              <span class="text-white">High Success Rate </span>
+            </div>
+            <a href="#" class="border border-white/30 secondary-btn mt-10">Subscribe Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- Plan Section End -->
+  <!-- Platform Performance  Start-->
+  <section class="section-gap bg-white/4">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <!-- common heading -->
+        <div class="max-w-150 mx-auto lg:text-start text-center space-y-2" data-aos="fade-up" data-aos-duration="800">
+          <h3>We Support 35+
+            Payment Gateways</h3>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text.
+
+          </p>
+          <ul class="flex items-center gap-2 mt-5">
+            <li
+              class="flex items-center gap-2 rounded-lg bg-white/10 py-1.5 px-4 text-white duration-500 hover:bg-white/20">
+              <img src="assets/images/icons/payments/logos_paypal.png" class="max-w-8" alt="icon">
+              Paypal
+            </li>
+            <li
+              class="flex items-center gap-2 rounded-lg bg-white/10 py-1.5 px-4 text-white duration-500 hover:bg-white/20">
+              <img src="assets/images/icons/payments/cryptocurrency-color_btc.png" class="max-w-8" alt="icon">
+              BTC
+            </li>
+            <li
+              class="flex items-center gap-2 rounded-lg bg-white/10 py-1.5 px-4 text-white duration-500 hover:bg-white/20">
+              <img src="assets/images/icons/payments/token-branded_usdt.png" class="max-w-8" alt="icon">
+              ETH
+            </li>
+          </ul>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-2 gap-6">
+          <!-- item -->
+          <div class="border border-brand/80 rounded-xl p-4 bg-white/5 group duration-500 hover:bg-white/15">
+            <div class="flex flex-col text-center sm:text-start sm:flex-row items-center gap-3">
+              <div
+                class="bg-brand/4 rounded-sm w-16 h-16 flex items-center justify-center p-2 group-hover:bg-white/10 duration-500">
+                <img src="assets/images/icons/mdi_secure.png" alt="icon" class="max-w-7 max-h-7 w-full h-auto">
+              </div>
+              <div>
+                <h3 class="font-medium">Secure</h3>
+                <p> Encrypted Payment Gateway</p>
+              </div>
+            </div>
+          </div>
+          <!-- item -->
+          <div class="border border-brand/80 rounded-xl p-4 bg-white/5 group duration-500 hover:bg-white/15">
+            <div class="flex flex-col text-center sm:text-start sm:flex-row items-center gap-3">
+              <div
+                class="bg-brand/4 rounded-sm w-16 h-16 flex items-center justify-center p-2 group-hover:bg-white/10 duration-500">
+                <img src="assets/images/icons/ri_global-fill.png" alt="icon" class="max-w-7 max-h-7 w-full h-auto">
+              </div>
+              <div>
+                <h3 class="font-medium">Global</h3>
+                <p>Worldwide Payment Solution</p>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Platform Performance  End-->
+  <section class="section-gap">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-y-6 gap-x-10">
+        <div>
+          <!-- common heading -->
+          <div class="max-w-160 md:mx-0 mx-auto md:text-start text-center space-y-3 aos-init" data-aos="fade-up"
+            data-aos-duration="600">
+            <h3>Automatic Refund Policy</h3>
+            <p>
+              We stand by our technology. If our service does not work correctly or you don’t receive the signals as
+              promised within your first 7 days, our system triggers an Automatic Refund.  No questions asked, no manual
+              forms to fill out.
+            </p>
+          </div>
+          <div class="space-y-2 mt-5 border-t border-white/6 pt-5">
+            <div class="flex items-center gap-2">
+
+              <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.97 10.583L0 5.613L0.714 4.9L4.97 9.156L14.126 0L14.839 0.714L4.97 10.583Z" fill="white"
+                  fill-opacity="0.8" />
+              </svg>
+
+              <p>Instant Processing</p>
+            </div>
+            <div class="flex items-center gap-2">
+
+              <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.97 10.583L0 5.613L0.714 4.9L4.97 9.156L14.126 0L14.839 0.714L4.97 10.583Z" fill="white"
+                  fill-opacity="0.8" />
+              </svg>
+
+              <p>No Paperwork</p>
+            </div>
+          </div>
+
+        </div>
+        <div data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100" class="max-w-95 mx-auto">
+          <img src="assets/images/thumbnails/refund.png" alt="img" class="w-full" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- CTA Section Start -->
+  <section class="section-gap">
+    <div class="container">
+      <div class="cta-grid-box">
+        <div class="relative z-10 max-w-150 mx-auto text-center space-y-2" data-aos="fade-up" data-aos-duration="600">
+          <h3>100% Trusted Forex Trading Signal provider</h3>
+          <p>
+            We have most experienced Forex Experts. and always analysis charts
+            and generate trading signal to help you to make good profit.
+          </p>
+          <div class="flex justify-center mt-5">
+            <a href="#" class="primary-btn">Subscribe Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- CTA Section End -->
+  <!-- FAQ Section Start -->
+  <section class="section-gap">
+    <div class="container">
+      <div class="max-w-150 mx-auto text-center space-y-2" data-aos="fade-up" data-aos-duration="600">
+        <h3>Common Questions</h3>
+        <p>
+          Unlike other platforms, we don’t hide behind numbers or delayed reports. Our Live Transparency Feed gives you
+          verified trade screenshots, ticker updates, and performance metrics as they happen.
+        </p>
+      </div>
+      <div class="max-w-[938px] mx-auto inner-gap">
+        <div class="accordion-group" data-mode="single">
+          <!-- accordion item -->
+          <div class="accordion-item border border-gray-800 rounded-lg mb-2 overflow-hidden shadow-sm bg-[#262A3C]">
+            <button
+              class="accordion-header w-full flex justify-between items-center py-3 px-4 text-left text-lg text-white hover:bg-brand/10 focus:outline-none"
+              data-target="start-faq-1" aria-expanded="true" data-default="">
+              Are profits guaranteed?
+              <svg class="default-arrow w-6 h-6 text-gray-600" fill="none" stroke="white" viewBox="0 0 24 24"
+                style="transform: rotate(180deg);">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div class="accordion-content overflow-hidden transition-max-height duration-500 ease-in-out"
+              id="start-faq-1" style="max-height: none;">
+              <div class="py-3 px-4 border-t border-gray-600">
+                <p class="text-soft-gray/80">
+                  A: No. Trading involves risk. We focus on discipline and risk management.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- accordion item -->
+          <div class="accordion-item border border-gray-800 rounded-lg mb-2 overflow-hidden shadow-sm bg-[#262A3C]">
+            <button
+              class="accordion-header w-full flex justify-between items-center py-3 px-4 text-left text-lg text-white hover:bg-brand/10 focus:outline-none"
+              data-target="start-faq-2" aria-expanded="false">
+              How do I receive signals?
+              <svg class="default-arrow w-6 h-6 text-gray-600" fill="none" stroke="white" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div class="accordion-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out"
+              id="start-faq-2">
+              <div class="py-3 px-4 border-t border-gray-600">
+                <p class="text-soft-gray/80">
+                  Our system combines Hasan’s expert analysis with
+                  automated data-driven scoring. Accuracy varies by
+                  sport and league, but consistency is maintained
+                  through continuous model adjustments.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- accordion item -->
+          <div class="accordion-item border border-gray-800 rounded-lg mb-2 overflow-hidden shadow-sm bg-[#262A3C]">
+            <button
+              class="accordion-header w-full flex justify-between items-center py-3 px-4 text-left text-lg text-white hover:bg-brand/10 focus:outline-none"
+              data-target="start-faq-3" aria-expanded="false">
+              Can I cancel anytime?
+              <svg class="default-arrow w-6 h-6 text-gray-600" fill="none" stroke="white" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div class="accordion-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out"
+              id="start-faq-3">
+              <div class="py-3 px-4 border-t border-gray-600">
+                <p class="text-soft-gray/80">
+                  Our system combines Hasan’s expert analysis with
+                  automated data-driven scoring. Accuracy varies by
+                  sport and league, but consistency is maintained
+                  through continuous model adjustments.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- accordion item -->
+          <div class="accordion-item border border-gray-800 rounded-lg mb-2 overflow-hidden shadow-sm bg-[#262A3C]">
+            <button
+              class="accordion-header w-full flex justify-between items-center py-3 px-4 text-left text-lg text-white hover:bg-brand/10 focus:outline-none"
+              data-target="start-faq-4" aria-expanded="false">
+              Is this suitable for beginners?
+              <svg class="default-arrow w-6 h-6 text-gray-600" fill="none" stroke="white" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div class="accordion-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out"
+              id="start-faq-4">
+              <div class="py-3 px-4 border-t border-gray-600">
+                <p class="text-soft-gray/80">
+                  Our system combines Hasan’s expert analysis with
+                  automated data-driven scoring. Accuracy varies by
+                  sport and league, but consistency is maintained
+                  through continuous model adjustments.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- accordion item -->
+          <div class="accordion-item border border-gray-800 rounded-lg mb-2 overflow-hidden shadow-sm bg-[#262A3C]">
+            <button
+              class="accordion-header w-full flex justify-between items-center py-3 px-4 text-left text-lg text-white hover:bg-brand/10 focus:outline-none"
+              data-target="start-faq-5" aria-expanded="false">
+              How does the referral system work?
+              <svg class="default-arrow w-6 h-6 text-gray-600" fill="none" stroke="white" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div class="accordion-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out"
+              id="start-faq-5">
+              <div class="py-3 px-4 border-t border-gray-600">
+                <p class="text-soft-gray/80">
+                  Our system combines Hasan’s expert analysis with
+                  automated data-driven scoring. Accuracy varies by
+                  sport and league, but consistency is maintained
+                  through continuous model adjustments.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- accordion item -->
+          <div class="accordion-item border border-gray-800 rounded-lg mb-2 overflow-hidden shadow-sm bg-[#262A3C]">
+            <button
+              class="accordion-header w-full flex justify-between items-center py-3 px-4 text-left text-lg text-white hover:bg-brand/10 focus:outline-none"
+              data-target="start-faq-6" aria-expanded="false">
+              When do I receive my referral earnings?
+              <svg class="default-arrow w-6 h-6 text-gray-600" fill="none" stroke="white" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div class="accordion-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out"
+              id="start-faq-6">
+              <div class="py-3 px-4 border-t border-gray-600">
+                <p class="text-soft-gray/80">
+                  Our system combines Hasan’s expert analysis with
+                  automated data-driven scoring. Accuracy varies by
+                  sport and league, but consistency is maintained
+                  through continuous model adjustments.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- accordion item -->
+          <div class="accordion-item border border-gray-800 rounded-lg mb-2 overflow-hidden shadow-sm bg-[#262A3C]">
+            <button
+              class="accordion-header w-full flex justify-between items-center py-3 px-4 text-left text-lg text-white hover:bg-brand/10 focus:outline-none"
+              data-target="start-faq-7" aria-expanded="false">
+              What sports are covered in the Forexs?
+              <svg class="default-arrow w-6 h-6 text-gray-600" fill="none" stroke="white" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div class="accordion-content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out"
+              id="start-faq-7">
+              <div class="py-3 px-4 border-t border-gray-600">
+                <p class="text-soft-gray/80">
+                  Our system combines Hasan’s expert analysis with
+                  automated data-driven scoring. Accuracy varies by
+                  sport and league, but consistency is maintained
+                  through continuous model adjustments.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FAQ Section End -->
+  <!-- Subscribe Section Start -->
+  <section class="section-gap">
+    <div class="container">
+      <div class="cta-grid-box">
+        <div class="flex gap-x-10 justify-center lg:flex-row flex-wrap gap-y-8 items-center lg:justify-between">
+          <div class="relative z-10 max-w-150 lg:mx-0 mx-auto lg:text-start text-center space-y-2" data-aos="fade-up"
+            data-aos-duration="600">
+            <h3>Subscribe To Our Newsletter</h3>
+            <p>Dont miss any promotion or news from us</p>
+          </div>
+          <div
+            class="flex items-center gap-3 border border-white/10 rounded-full p-1 ps-4 bg-white/4 backdrop-blur-3xl">
+            <input type="email" placeholder="Enter Your Email Here"
+              class="text-white text-sm sm:text-lg border-0 outline-0" />
+            <button type="submit" class="text-sm text-nowrap px-2 sm:px-auto primary-btn cursor-pointer">
+              Subscribe Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Subscribe Section End -->
+
+  <!-- Footer Section Start -->
+  <section class="section-gap bg-black/20">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-6">
+        <!--   About -->
+        <div class="space-y-6 md:col-span-3 lg:col-span-1 md:text-center lg:text-left">
+          <a href="index.html" class="block">
+            <img src="assets/images/logo.png" alt="logo" class="max-w-40 mx-auto lg:mx-0" />
+          </a>
+          <p class="text-gray-400 text-center md:text-start text-sm leading-7 md:max-w-2xl md:mx-auto lg:mx-0">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy.
+            Lorem Ipsum is simply dummy text of the printing typesetting
+            industry Lorem Ipsum is simply.
+          </p>
+        </div>
+
+        <!--   Popular Category -->
+        <div>
+          <h4 class="footer-title">Popular Category</h4>
+          <ul class="space-y-1">
+            <li><a href="fx-live-chart.html" class="footer-link">Cryipto</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Forex</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Bitcoin</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">International</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Market</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Currency Exchange</a></li>
+            <li><a href="fx-live-chart.html" class="footer-link">Trading</a></li>
+          </ul>
+        </div>
+
+        <!--  Popular Blog -->
+        <div>
+          <h4 class="footer-title">Popular Blog</h4>
+          <ul class="space-y-1">
+            <li>
+              <a href="#" class="footer-link">'Doing daily chores can h...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">$300 Billion: Bitcoin Pri...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">As Price Eyes $10,000, Bi...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">But I must explain to mis...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">Short-term forecast for B...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">$10,000 Today? Bitcoin Pr...</a>
+            </li>
+            <li>
+              <a href="#" class="footer-link">Where does it come from?</a>
+            </li>
+          </ul>
+        </div>
+
+        <!--  Contact & Social -->
+        <div>
+          <h4 class="footer-title">Contact Details</h4>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-3">
+              <img src="assets/images/icons/social-icons/call.png" alt="phone" class="w-5 h-5 object-contain" />
+              <a href="tel:1234567890" class="text-gray-400 text-sm">(480) 555-0103</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <img src="assets/images/icons/social-icons/message.png" alt="email" class="w-5 h-5 object-contain" />
+              <a href="mailto:willie.jennings@example.com" class="text-gray-400 text-sm">willie.jennings@example.com</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <img src="assets/images/icons/social-icons/location.png" alt="location"
+                class="w-5 h-5 object-contain mt-1" />
+              <a href="https://www.google.com/maps/place/2715+Ash+Dr,+San+Jose,+CA+95129"
+                class="text-gray-400 text-sm">2715 Ash Dr. San Jose,<br />South Dakota 83475</a>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center md:items-start">
+            <h4 class="text-white font-bold text-[16px] uppercase mb-4">
+              FOLLOW US
+            </h4>
+            <div class="flex gap-3">
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/facebook.png" alt="facebook"
+                  class="w-4 h-4 object-contain" />
+              </a>
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/twitter.png" alt="twitter" class="w-4 h-4 object-contain" />
+              </a>
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/instagram.png" alt="instagram"
+                  class="w-4 h-4 object-contain" />
+              </a>
+              <a href="#" class="social-btn">
+                <img src="assets/images/icons/social-icons/linkedin.png" alt="linkedin"
+                  class="w-4 h-4 object-contain" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div
+        class="border-t border-white/10 mt-10 gap-4 flex flex-col md:flex-row justify-between items-center bg-[#1F2937] p-6 rounded-xl">
+        <p class="text-gray-400 text-sm">
+          © 2026
+          <a href="index.html" class="text-white hover:text-brand duration-800">Forex Signal</a>
+          . All Rights Reserved
+        </p>
+        <div class="flex gap-6">
+          <a href="privacy-policy.html" class="text-gray-400 text-sm hover:text-white transition-colors">Privacy
+            Policy</a>
+          <a href="terms-condition.html" class="text-gray-400 text-sm hover:text-white transition-colors">Cookie
+            Policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer Section End -->
+
+  <script src="assets/js/accordion.js"></script>
+  <script src="assets/js/tab.js"></script>
+
+  <script>
+    const openBtn = document.getElementById("open-menu");
+    const closeBtn = document.getElementById("close-menu");
+    const canvasMenu = document.getElementById("canvas-menu");
+    const overlay = document.getElementById("overlay");
+    openBtn.addEventListener("click", () => {
+      canvasMenu.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    });
+    closeBtn.addEventListener("click", () => {
+      canvasMenu.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+
+    overlay.addEventListener("click", () => {
+      canvasMenu.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+  </script>
+  <!-- filter js -->
+  <script>
+    document.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("filter-btn")) return;
+
+      const btn = e.target;
+      const container = btn.closest(".filter-container");
+      const filterButtons = container.querySelectorAll(".filter-btn");
+      const filterItems = container.querySelectorAll(".filter-item");
+
+      // active button
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.dataset.filter;
+
+      filterItems.forEach((item) => {
+        const categories = item.dataset.category.split(" ");
+        if (filter === "all" || categories.includes(filter)) {
+          item.classList.remove("filter-hide");
+          item.classList.add("filter-show");
+        } else {
+          item.classList.add("filter-hide");
+          item.classList.remove("filter-show");
+        }
+      });
+    });
+  </script>
+
+  <!-- Swiper slider JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- user review slider js -->
+  <script>
+    const userReviewSlider = new Swiper(".user-review-slider", {
+      slidesPerView: 3,
+      centeredSlides: true,
+      loop: true,
+      speed: 4000,
+      spaceBetween: 20,
+      autoplay: true,
+
+      autoplay: {
+        delay: 1000,
+        disableOnInteraction: true,
+      },
+      navigation: {
+        nextEl: "#swiper-slider-button-next",
+        prevEl: "#swiper-slider-button-prev",
+      },
+      grabCursor: true,
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+
+        768: {
+          slidesPerView: 2,
+        },
+      },
+    });
+  </script>
+  <!-- hero slider js -->
+  <script>
+    const heroSlider = new Swiper(".hero-slider", {
+      slidesPerView: 1,
+      centeredSlides: true,
+      loop: true,
+      speed: 3200,
+
+      effect: "fade",
+      fadeEffect: {
+        crossFade: true,
+      },
+
+      autoplay: {
+        delay: 1500,
+        disableOnInteraction: false,
+      },
+    });
+  </script>
+  <!-- Aos -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      mirror: true,
+      once: false,
+      offset: 120,
+      anchorPlacement: "top-bottom",
+      disableMutationObserver: false,
+    });
+  </script>
+  <!-- preloader js -->
+  <script>
+    window.addEventListener("load", () => {
+      const preloader = document.getElementById("preloader");
+      preloader.classList.add("opacity-0");
+      setTimeout(() => {
+        preloader.classList.add("hidden");
+      }, 800);
+    });
+  </script>
+</body>
+
+</html>
