@@ -1472,132 +1472,17 @@
   </footer>
   <!-- Footer Section End -->
 
-  <script src="assets/js/accordion.js"></script>
-  <script src="assets/js/tab.js"></script>
-
-  <script>
-    const openBtn = document.getElementById("open-menu");
-    const closeBtn = document.getElementById("close-menu");
-    const canvasMenu = document.getElementById("canvas-menu");
-    const overlay = document.getElementById("overlay");
-    openBtn.addEventListener("click", () => {
-      canvasMenu.classList.remove("-translate-x-full");
-      overlay.classList.remove("hidden");
-    });
-    closeBtn.addEventListener("click", () => {
-      canvasMenu.classList.add("-translate-x-full");
-      overlay.classList.add("hidden");
-    });
-
-    overlay.addEventListener("click", () => {
-      canvasMenu.classList.add("-translate-x-full");
-      overlay.classList.add("hidden");
-    });
-  </script>
-  <!-- filter js -->
-  <script>
-    document.addEventListener("click", (e) => {
-      if (!e.target.classList.contains("filter-btn")) return;
-
-      const btn = e.target;
-      const container = btn.closest(".filter-container");
-      const filterButtons = container.querySelectorAll(".filter-btn");
-      const filterItems = container.querySelectorAll(".filter-item");
-
-      // active button
-      filterButtons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const filter = btn.dataset.filter;
-
-      filterItems.forEach((item) => {
-        const categories = item.dataset.category.split(" ");
-        if (filter === "all" || categories.includes(filter)) {
-          item.classList.remove("filter-hide");
-          item.classList.add("filter-show");
-        } else {
-          item.classList.add("filter-hide");
-          item.classList.remove("filter-show");
-        }
-      });
-    });
-  </script>
 
   <!-- Swiper slider JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
   <!-- user review slider js -->
-  <script>
-    const userReviewSlider = new Swiper(".user-review-slider", {
-      slidesPerView: 3,
-      centeredSlides: true,
-      loop: true,
-      speed: 1200,
-      spaceBetween: 20,
-      autoplay: true,
-
-      autoplay: {
-        delay: 1000,
-        disableOnInteraction: true,
-      },
-      navigation: {
-        nextEl: "#swiper-slider-button-next",
-        prevEl: "#swiper-slider-button-prev",
-      },
-      grabCursor: true,
-      breakpoints: {
-        0: {
-          slidesPerView: 1,
-        },
-
-        768: {
-          slidesPerView: 3,
-        },
-      },
-    });
-  </script>
+  <script src="assets/js/user-review-slider.js"></script>
   <!-- hero slider js -->
-  <script>
-    const heroSlider = new Swiper(".hero-slider", {
-      slidesPerView: 1,
-      centeredSlides: true,
-      loop: true,
-      speed: 3200,
-
-      effect: "fade",
-      fadeEffect: {
-        crossFade: true,
-      },
-
-      autoplay: {
-        delay: 1500,
-        disableOnInteraction: false,
-      },
-    });
-  </script>
+  <script src="assets/js/hero-slider.js"></script>
   <!-- Aos -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      mirror: true,
-      once: false,
-      offset: 120,
-      anchorPlacement: "top-bottom",
-      disableMutationObserver: false,
-    });
-  </script>
-  <!-- preloader js -->
-  <script>
-    window.addEventListener("load", () => {
-      const preloader = document.getElementById("preloader");
-      preloader.classList.add("opacity-0");
-      setTimeout(() => {
-        preloader.classList.add("hidden");
-      }, 800);
-    });
-  </script>
+  <!-- common js -->
+  <script src="assets/js/common.js"></script>
 </body>
 
 </html>

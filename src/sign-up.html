@@ -419,50 +419,11 @@
   <!-- Footer Section End -->
   <!-- Aos -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      mirror: true,
-      once: false,
-      offset: 100,
-      anchorPlacement: "top-bottom",
-      disableMutationObserver: false,
-    });
-  </script>
-  <!-- preloader js -->
-  <script>
-    window.addEventListener("load", () => {
-      const preloader = document.getElementById("preloader");
-      preloader.classList.add("opacity-0");
-      setTimeout(() => {
-        preloader.classList.add("hidden");
-      }, 800);
-    });
-  </script>
   <!-- Toggle Password Script -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(".password-toggle").forEach((toggleBtn) => {
-        toggleBtn.addEventListener("click", () => {
-          const input = toggleBtn
-            .closest(".relative")
-            .querySelector(".password-input");
-          const eyeOpen = toggleBtn.querySelector(".eye-open");
-          const eyeClosed = toggleBtn.querySelector(".eye-closed");
-          if (input.type === "password") {
-            input.type = "text";
-            eyeOpen.classList.remove("hidden");
-            eyeClosed.classList.add("hidden");
-          } else {
-            input.type = "password";
-            eyeOpen.classList.add("hidden");
-            eyeClosed.classList.remove("hidden");
-          }
-        });
-      });
-    });
-  </script>
+  <script src="assets/js/toggle-password.js"></script>
+
+  <script src="assets/js/common.js"></script>
+
 </body>
 
 </html>
