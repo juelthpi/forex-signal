@@ -1,0 +1,45 @@
+<!-- Subscribe Section Start -->
+<section class="section-gap">
+    <div class="container">
+        <div class="cta-grid-box">
+            <div class="flex gap-x-10 justify-center lg:flex-row flex-wrap gap-y-8 items-center lg:justify-between">
+                <div class="relative z-10 max-w-150 lg:mx-0 mx-auto lg:text-start text-center space-y-2"
+                    data-aos="fade-up" data-aos-duration="600">
+                    <h3>Subscribe To Our Newsletter</h3>
+                    <p>Dont miss any promotion or news from us</p>
+                </div>
+                <div class="w-full max-w-md space-y-3">
+                    <!-- Success Message Example -->
+                    <div class="flex items-center gap-2 text-green-400 text-sm ps-4 animate-fade-in">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <span>Successfully subscribed to our newsletter!</span>
+                    </div>
+                    <!-- Error Message Example -->
+                    <div class="flex items-center gap-2 text-red-400 text-sm ps-4 animate-fade-in">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <span>Please enter a valid email address.</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-3 border border-white/10 rounded-full p-1 ps-4 bg-white/4 backdrop-blur-3xl">
+                        <input type="email" placeholder="Enter Your Email Here"
+                            class="text-white text-sm sm:text-lg border-0 outline-0 flex-1 bg-transparent" />
+                        <button type="submit" class="text-sm text-nowrap px-6 primary-btn cursor-pointer">
+                            Subscribe Now
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Subscribe Section End -->
