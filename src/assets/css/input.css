@@ -115,6 +115,40 @@ body {
   @apply px-5 md:px-6 py-2 md:py-2.5 rounded-3xl text-white font-medium flex gap-2 justify-center items-center bg-black/50;
 }
 
+/* Auth Buttons */
+.auth-login-btn {
+  @apply px-5 py-2 rounded-3xl text-white/90 font-medium flex gap-2 justify-center items-center transition-all duration-500 ease-in-out cursor-pointer text-sm;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.auth-login-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-brand);
+  color: white;
+  box-shadow: 0 0 20px -4px color-mix(in srgb, var(--color-brand) 30%, transparent),
+    inset 0 0 12px -6px color-mix(in srgb, var(--color-brand) 15%, transparent);
+}
+
+.auth-signup-btn {
+  @apply px-5 py-2 rounded-3xl text-white font-medium flex gap-2 justify-center items-center transition-all duration-500 ease-in-out cursor-pointer text-sm;
+  background: linear-gradient(135deg,
+      var(--color-brand),
+      var(--color-secondary),
+      var(--color-brand));
+  background-size: 200% 100%;
+  background-position: left center;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 15px -3px color-mix(in srgb, var(--color-brand) 35%, transparent);
+}
+
+.auth-signup-btn:hover {
+  background-position: right center;
+  box-shadow: 0 6px 25px -3px color-mix(in srgb, var(--color-brand) 50%, transparent);
+  transform: translateY(-1px);
+}
+
 @utility text-gradient {
   @apply bg-linear-to-r from-brand to-secondary bg-clip-text text-transparent;
 }
